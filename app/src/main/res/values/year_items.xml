@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="branch_items">
+            <item>What is your branch ?</item>
+            <item>CSE</item>
+            <item>IT</item>
+            <item>CSE(AIML)</item>
+            <item>CSE(DS)</item>
+            <item>ECE</item>
+            <item>EEE</item>
+            <item>CE</item>
+            <item>ME</item>
+        </string-array>
+</resources>

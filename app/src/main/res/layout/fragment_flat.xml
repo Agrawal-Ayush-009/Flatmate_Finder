@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Flat"
+    android:fitsSystemWindows="true"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/round_arrow_back_ios_24"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="34dp"
+        />
+
+    <TextView
+        android:id="@+id/nameHeading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:fontFamily="@font/satoshi_bold"
+        android:text="Do you already have flat?"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="36dp"
+
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:fontFamily="@font/product_sans_regular"
+        android:id="@+id/YesButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/nameHeading"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/button_option"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="72dp"
+        android:layout_marginTop="36dp"
+        android:text="Yes"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        android:textColor="@drawable/button_text_color_2"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:fontFamily="@font/product_sans_regular"
+        android:id="@+id/NoButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/YesButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/button_option"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
+        android:text="No"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        android:textColor="@drawable/button_text_color_2"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/next"
+        android:fontFamily="@font/product_sans_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NoButton"
+        android:background="@drawable/button"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="64dp"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        android:textColor="@drawable/button_text_color"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>

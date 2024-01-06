@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FlatmateFinder" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">#FB893D</item>
+    </style>
+
+    <style name="Theme.FlatmateFinder" parent="Base.Theme.FlatmateFinder" />
+
+    <style name="NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="CustomStyle" parent="Widget.Material3.Slider">
+        <item name="backgroundColor">@style/SliderLabelStyle</item>
+    </style>
+
+    <style name="SliderLabelStyle" parent="TextAppearance.AppCompat.Body2">
+        <!-- Set the desired text color -->
+        <item name="android:background">#FB893D</item>
+    </style>
+
+    <style name="SpinnerTheme">
+        <item name="android:textColor">#000000</item>
+        <item name="android:fontFamily">@font/product_sans_regular</item>
+    </style>
+</resources>

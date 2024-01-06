@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Home"
+        android:id="@+id/home"
+        android:icon="@drawable/home_selector"
+        app:showAsAction="always"
+        />
+    <item android:title="Message"
+        android:id="@+id/message"
+        android:icon="@drawable/message_selector"
+        app:showAsAction="always"
+        />
+
+    <item android:title="Profile"
+        android:id="@+id/profile"
+        android:icon="@drawable/profile_selector"
+        app:showAsAction="always"
+        />
+</menu>

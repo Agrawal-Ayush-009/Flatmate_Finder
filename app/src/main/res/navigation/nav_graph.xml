@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/name">
+
+    <fragment
+        android:id="@+id/name"
+        android:name="com.example.flatmatefinder.Name"
+        android:label="fragment_name"
+        tools:layout="@layout/fragment_name" >
+        <action
+            android:id="@+id/action_name_to_DOB"
+            app:destination="@id/DOB"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/DOB"
+        android:name="com.example.flatmatefinder.DOB"
+        android:label="fragment_d_o_b"
+        tools:layout="@layout/fragment_d_o_b" >
+        <action
+            android:id="@+id/action_DOB_to_gender"
+            app:destination="@id/gender"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/gender"
+        android:name="com.example.flatmatefinder.Gender"
+        android:label="fragment_gender"
+        tools:layout="@layout/fragment_gender" >
+        <action
+            android:id="@+id/action_gender_to_academicDetails"
+            app:destination="@id/academicDetails"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/academicDetails"
+        android:name="com.example.flatmatefinder.AcademicDetails"
+        android:label="fragment_academic_details"
+        tools:layout="@layout/fragment_academic_details" >
+        <action
+            android:id="@+id/action_academicDetails_to_flat"
+            app:destination="@id/flat"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/flat"
+        android:name="com.example.flatmatefinder.Flat"
+        android:label="fragment_flat"
+        tools:layout="@layout/fragment_flat" >
+        <action
+            android:id="@+id/action_flat_to_flatPicture"
+            app:destination="@id/flatPicture"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_flat_to_userPicture"
+            app:destination="@id/userPicture"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/flatPicture"
+        android:name="com.example.flatmatefinder.FlatPicture"
+        android:label="fragment_flat_picture"
+        tools:layout="@layout/fragment_flat_picture" >
+        <action
+            android:id="@+id/action_flatPicture_to_flatInfo"
+            app:destination="@id/flatInfo"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/userPicture"
+        android:name="com.example.flatmatefinder.UserPicture"
+        android:label="fragment_user_picture"
+        tools:layout="@layout/fragment_user_picture" >
+        <action
+            android:id="@+id/action_userPicture_to_personalInfo"
+            app:destination="@id/personalInfo"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/flatInfo"
+        android:name="com.example.flatmatefinder.FlatInfo"
+        android:label="fragment_flat_info"
+        tools:layout="@layout/fragment_flat_info" >
+        <action
+            android:id="@+id/action_flatInfo_to_flatInfo2"
+            app:destination="@id/flatInfo2"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalInfo"
+        android:name="com.example.flatmatefinder.PersonalInfo"
+        android:label="fragment_personal_info"
+        tools:layout="@layout/fragment_personal_info" />
+    <fragment
+        android:id="@+id/flatInfo2"
+        android:name="com.example.flatmatefinder.FlatInfo2"
+        android:label="fragment_flat_info2"
+        tools:layout="@layout/fragment_flat_info2" >
+        <action
+            android:id="@+id/action_flatInfo2_to_userPicture"
+            app:destination="@id/userPicture"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+</navigation>

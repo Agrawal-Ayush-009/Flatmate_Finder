@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context=".FlatInfo">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="34dp"
+            android:src="@drawable/round_arrow_back_ios_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nameHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/satoshi_bold"
+            android:text="Tell us more about your flat"
+            android:textColor="@color/black"
+            android:textSize="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/back"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="20dp"
+            />
+
+        <TextView
+            android:id="@+id/addressHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="Address"
+            android:textColor="#000000"
+            android:textSize="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameHeading" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Enter full address of your flat"
+            android:textColor="#E5000000"
+            android:textSize="20dp"
+            app:layout_constraintLeft_toLeftOf="@+id/addressHeading"
+            app:layout_constraintTop_toBottomOf="@+id/addressHeading" />
+
+        <TextView
+            android:id="@+id/flat_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="61dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Flat, House no., Building, Company, Apartment*"
+            android:textColor="#B2000000"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@+id/addressHeading"
+            app:layout_constraintTop_toBottomOf="@+id/addressHeading" />
+
+        <EditText
+            android:id="@+id/input_flat_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text_2"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingLeft="8dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flat_no" />
+
+        <TextView
+            android:id="@+id/area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Area, Street, Sector, Village*"
+            android:textColor="#B2000000"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@+id/input_flat_no"
+            app:layout_constraintTop_toBottomOf="@+id/input_flat_no" />
+
+        <EditText
+            android:id="@+id/input_area"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text_2"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingLeft="8dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/area" />
+
+        <TextView
+            android:id="@+id/addInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Additional details (optional)"
+            android:textColor="#B2000000"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@+id/input_area"
+            app:layout_constraintTop_toBottomOf="@+id/input_area" />
+
+        <EditText
+            android:id="@+id/input_addInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text_2"
+            android:fontFamily="@font/product_sans_regular"
+            android:minHeight="84dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="16dp"
+            android:gravity="top"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addInfo" />
+
+        <TextView
+            android:id="@+id/rentHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="Rent"
+            android:textColor="#000000"
+            android:textSize="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_addInfo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Enter the rent of the flat."
+            android:textColor="#E5000000"
+            android:textSize="20dp"
+            app:layout_constraintLeft_toLeftOf="@+id/rentHeading"
+            app:layout_constraintTop_toBottomOf="@+id/rentHeading" />
+
+        <TextView
+            android:id="@+id/monthlyAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="61dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Monthly Amount"
+            android:textColor="#B2000000"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@+id/rentHeading"
+            app:layout_constraintTop_toBottomOf="@+id/rentHeading"/>
+
+        <EditText
+            android:id="@+id/input_monthlyAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text_2"
+            android:fontFamily="@font/product_sans_regular"
+            android:inputType="number"
+            android:paddingLeft="8dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/input_brokerageAmount"
+            app:layout_constraintTop_toBottomOf="@+id/monthlyAmount"/>
+
+        <TextView
+            android:id="@+id/brokerageAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="61dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Brokerage (if any)"
+            android:textColor="#B2000000"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@id/input_brokerageAmount"
+            app:layout_constraintTop_toBottomOf="@+id/rentHeading"
+            />
+
+        <EditText
+            android:id="@+id/input_brokerageAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text_2"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingLeft="8dp"
+            android:inputType="number"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toRightOf="@id/input_monthlyAmount"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/monthlyAmount"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_monthlyAmount"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="72dp"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:textColor="@drawable/button_text_color"
+            android:fontFamily="@font/product_sans_regular"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

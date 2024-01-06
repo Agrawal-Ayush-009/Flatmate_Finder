@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context=".PersonalInfo">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="34dp"
+        android:src="@drawable/round_arrow_back_ios_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/product_sans_bold"
+        android:text="skip"
+        android:textColor="#B2000000"
+        android:textSize="15dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/satoshi_bold"
+        android:text="Tell us about your\nlifestyle"
+        android:textColor="@color/black"
+        android:textSize="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back" />
+
+    <TextView
+        android:id="@+id/drinkQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/product_sans_bold"
+        android:text="Do you drink?"
+        android:textColor="#B2000000"
+        android:textSize="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameHeading" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/drink_yes"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_2"
+        android:fontFamily="@font/product_sans_regular"
+        android:paddingLeft="18dp"
+        android:paddingTop="8dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="8dp"
+        android:text="Yes"
+        android:textAllCaps="false"
+        android:textColor="@drawable/yes_button_text"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drinkQuestion" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/drink_no"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_2"
+        android:fontFamily="@font/product_sans_regular"
+        android:paddingLeft="18dp"
+        android:paddingTop="8dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="8dp"
+        android:text="No"
+        android:textAllCaps="false"
+        android:textColor="@drawable/no_button_text"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/drink_yes"
+        app:layout_constraintTop_toBottomOf="@+id/drinkQuestion" />
+
+    <TextView
+        android:id="@+id/smokeQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/product_sans_bold"
+        android:text="Do you smoke?"
+        android:textColor="#B2000000"
+        android:textSize="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drink_yes" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/smoke_yes"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_2"
+        android:fontFamily="@font/product_sans_regular"
+        android:paddingLeft="18dp"
+        android:paddingTop="8dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="8dp"
+        android:text="Yes"
+        android:textAllCaps="false"
+        android:textColor="@drawable/yes_button_text"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smokeQuestion" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/smoke_no"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_2"
+        android:fontFamily="@font/product_sans_regular"
+        android:paddingLeft="18dp"
+        android:paddingTop="8dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="8dp"
+        android:text="No"
+        android:textAllCaps="false"
+        android:textColor="@drawable/no_button_text"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/smoke_yes"
+        app:layout_constraintTop_toBottomOf="@+id/smokeQuestion" />
+
+    <TextView
+        android:id="@+id/workoutQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/product_sans_bold"
+        android:text="Do you workout?"
+        android:textColor="#B2000000"
+        android:textSize="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smoke_yes" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/workout_yes"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_2"
+        android:fontFamily="@font/product_sans_regular"
+        android:paddingLeft="18dp"
+        android:paddingTop="8dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="8dp"
+        android:text="Yes"
+        android:textAllCaps="false"
+        android:textColor="@drawable/yes_button_text"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workoutQuestion" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/workout_no"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_2"
+        android:fontFamily="@font/product_sans_regular"
+        android:paddingLeft="18dp"
+        android:paddingTop="8dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="8dp"
+        android:text="No"
+        android:textAllCaps="false"
+        android:textColor="@drawable/no_button_text"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/workout_yes"
+        app:layout_constraintTop_toBottomOf="@+id/workoutQuestion" />
+
+        <TextView
+        android:id="@+id/vegetarianQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/product_sans_bold"
+        android:text="Are you non-vegetarian ?"
+        android:textColor="#B2000000"
+        android:textSize="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workout_yes"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/non_vegetarian_yes"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_2"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingLeft="18dp"
+            android:paddingTop="8dp"
+            android:paddingRight="18dp"
+            android:paddingBottom="8dp"
+            android:text="Yes"
+            android:textAllCaps="false"
+            android:textColor="@drawable/yes_button_text"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vegetarianQuestion" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/non_vegetarian_no"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="44dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_2"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingLeft="18dp"
+            android:paddingTop="8dp"
+            android:paddingRight="18dp"
+            android:paddingBottom="8dp"
+            android:text="No"
+            android:textAllCaps="false"
+            android:textColor="@drawable/no_button_text"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toRightOf="@+id/non_vegetarian_yes"
+            app:layout_constraintTop_toBottomOf="@+id/vegetarianQuestion" />
+
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/product_sans_regular"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@drawable/button_text_color"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/non_vegetarian_yes"
+        android:layout_marginTop="30dp"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FlatInfo2">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="34dp"
+            android:src="@drawable/round_arrow_back_ios_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nameHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/satoshi_bold"
+            android:text="Almost there"
+            android:textColor="@color/black"
+            android:textSize="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/back" />
+
+        <TextView
+            android:id="@+id/addressHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="Your flat is"
+            android:textColor="#000000"
+            android:textSize="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameHeading" />
+
+        <RadioGroup
+            android:id="@+id/radioInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintTop_toBottomOf="@id/addressHeading"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <RadioButton
+                android:id="@+id/fullyFurnished"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fully furnished   "
+                android:fontFamily="@font/product_sans_bold"
+                android:buttonTint="#FB893D"
+                android:layoutDirection="rtl"
+                android:textAlignment="textStart"
+                android:layout_gravity = "start"
+                android:textSize="20dp"
+                />
+            <RadioButton
+                android:id="@+id/semiFurnished"
+                android:layoutDirection="rtl"
+                android:textAlignment="textStart"
+                android:layout_gravity = "start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="semi furnished  "
+                android:fontFamily="@font/product_sans_bold"
+                android:buttonTint="#FB893D"
+                android:textSize="20dp"
+                />
+
+            <RadioButton
+                android:id="@+id/nonFurnished"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:buttonTint="#FB893D"
+                android:fontFamily="@font/product_sans_bold"
+                android:layoutDirection="rtl"
+                android:text="non furnished    "
+                android:textAlignment="textStart"
+                android:textSize="20dp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/capacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="Capacity"
+            android:textColor="#000000"
+            android:textSize="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioInfo" />
+
+        <TextView
+            android:id="@+id/capacityDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="@string/capacityDescription"
+            android:textColor="#E5000000"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@+id/capacity"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/capacity" />
+
+        <TextView
+            android:id="@+id/min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="min. 1"
+            android:textColor="#B2000000"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@+id/capacityDescription"
+            app:layout_constraintTop_toBottomOf="@+id/capacityDescription" />
+
+        <EditText
+            android:id="@+id/input_capacity"
+            android:layout_width="224dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:inputType="number"
+            android:background="@drawable/edit_text_2"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingLeft="8dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/min" />
+
+        <TextView
+            android:id="@+id/occupied"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="Occupied"
+            android:textColor="#000000"
+            android:textSize="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_capacity" />
+
+        <TextView
+            android:id="@+id/occupiedDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="@string/occupiedDescription"
+            android:textColor="#E5000000"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@+id/occupied"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/occupied"
+
+            />
+
+        <com.google.android.material.slider.Slider
+            android:id="@id/occupiedSlider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:stepSize="1"
+            android:valueFrom="0"
+            android:valueTo="4"
+            style="@style/CustomStyle"
+            app:haloRadius="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/occupiedDescription"
+            app:thumbColor="#ffffff"
+            app:labelBehavior="visible"
+            app:thumbStrokeColor="#FB893D"
+            app:thumbStrokeWidth="2dp"
+            app:tickColor="@color/black"
+            app:tickColorActive="@color/black"
+            app:trackColor = "#FB893D" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="72dp"
+            android:background="@drawable/button"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/occupiedSlider" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

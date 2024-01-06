@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape = "rectangle">
+                    <stroke android:color="#595959" android:width="2dp"/>
+                    <corners android:radius="5dp"/>
+                </shape>
+            </item>
+
+            <item android:drawable="@drawable/round_keyboard_arrow_down_24"
+                  android:gravity="end">
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

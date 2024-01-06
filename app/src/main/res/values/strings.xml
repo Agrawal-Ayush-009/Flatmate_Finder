@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Flatmate Finder</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="inputNameDescription">This is how it’ll appear on your profile.\n<b>Can’t Change it later.</b></string>
+    <string name="pictureImageDescription">Upload a photos of yourself\n the photo will be <b>visible to the public.</b></string>
+    <string name="pictureImageDescriptionFlat">Upload<b> 4 or more </b>photos of your flat.</string>
+    <string name="capacityDescription">Enter the <b>maximum number</b> of flatmates you want (<b>excluding you</b>).</string>
+    <string name="occupiedDescription">Enter the <b>number</b> of flatmates occupied (<b>excluding you</b>).</string>
+    <string name="emailDescription">Enter the OTP sent to <b>ayu*********i@gmail.com</b></string>
+    <string name="otpDescription">Didn’t recieve the OTP ? <b>click here to resend</b></string>
+</resources>
