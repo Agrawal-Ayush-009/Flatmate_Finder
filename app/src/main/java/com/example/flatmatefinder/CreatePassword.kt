@@ -6,28 +6,78 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
+import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.databinding.FragmentCreatePasswordBinding
+import com.example.flatmatefinder.models.SignUpRequest
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CreatePassword : Fragment() {
     private var _binding : FragmentCreatePasswordBinding? = null
     private val binding get() = _binding!!
+    private val authViewModel by viewModels<AuthViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCreatePasswordBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val createPassword = binding.createPassword
         val back = binding.back
+        val activity = activity as LoginActivity
+
         back.setOnClickListener {
             findNavController().popBackStack()
         }
         createPassword.setOnClickListener {
-            startActivity(Intent(activity as LoginActivity, OnboardingActivity::class.java))
+            val email = activity.email
+            val password = binding.Password.text.toString()
+            val passwordRepeat = binding.PasswordRepeat.text.toString()
+            val validation = authViewModel.validateCredentials(email, password)
+            if(validation.first){
+                if(passwordRepeat != password){
+                    Toast.makeText(activity,"Password doesn't match", Toast.LENGTH_SHORT).show()
+                }else{
+                    authViewModel.signUpUser(SignUpRequest(email, password))
+                }
+            }else{
+                Toast.makeText(activity, validation.second, Toast.LENGTH_SHORT).show()
+            }
         }
-        return binding.root
+
+        bindObservers()
     }
 
+    private fun bindObservers() {
+        authViewModel.signUpRequestLiveData.observe(viewLifecycleOwner, Observer {
+            binding.progressBar.isVisible = false
+            when (it) {
+                is NetworkResult.Success -> {
+                    //token
+                    startActivity(Intent(activity as LoginActivity, OnboardingActivity::class.java))
+                }
+
+                is NetworkResult.Error -> {
+                    Toast.makeText(activity as LoginActivity, it.msg, Toast.LENGTH_SHORT).show()
+                }
+
+                is NetworkResult.Loading -> {
+                    binding.progressBar.isVisible = true
+                }
+            }
+        })
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

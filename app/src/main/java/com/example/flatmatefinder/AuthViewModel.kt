@@ -8,6 +8,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.models.LoginRequest
 import com.example.flatmatefinder.models.LoginResponse
+import com.example.flatmatefinder.models.OTPRequest
+import com.example.flatmatefinder.models.OTPResponse
+import com.example.flatmatefinder.models.SignUpRequest
+import com.example.flatmatefinder.models.SignUpResponse
+import com.example.flatmatefinder.models.VerifyOTPRequest
 import com.example.flatmatefinder.repository.Repository
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,11 +26,34 @@ class AuthViewModel @Inject constructor(private val repository: Repository): Vie
     val loginResponseLiveData: LiveData<NetworkResult<LoginResponse>>
         get() = repository.loginResponseLiveData
 
+    val otpResponseLiveData: LiveData<NetworkResult<OTPResponse>>
+        get() = repository.otpResponseLiveData
+
+    val signUpRequestLiveData: LiveData<NetworkResult<SignUpResponse>>
+        get() = repository.signUpRequestLiveData
+
     fun loginUser(loginRequest: LoginRequest){
         viewModelScope.launch {
             repository.loginUser(loginRequest)
         }
+    }
 
+    fun signUpUser(signUpRequest: SignUpRequest){
+        viewModelScope.launch {
+            repository.signUpUser(signUpRequest)
+        }
+    }
+
+    fun sendOTP(otpRequest: OTPRequest){
+        viewModelScope.launch {
+            repository.sendOTP(otpRequest)
+        }
+    }
+
+    fun verifyOTP(verifyOTPRequest: VerifyOTPRequest){
+        viewModelScope.launch {
+            repository.verifyOTP(verifyOTPRequest)
+        }
     }
 
     fun validateCredentials(email: String, password: String): Pair<Boolean, String>{

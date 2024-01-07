@@ -108,11 +108,25 @@
         android:background="@drawable/button"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="112dp"
         android:text="Verify OTP"
         android:textAllCaps="false"
         android:textSize="16dp"
         android:textColor="@drawable/button_text_color"
         />
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otp"
+        android:layout_marginTop="50dp"
+        android:indeterminateTint="#FB893D"
+        style="@style/NoActionBar"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
