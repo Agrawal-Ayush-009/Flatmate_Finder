@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="year_items">
-        <item>In which year are you currently studying ?</item>
+        <item>In which year are you currently studying?</item>
         <item>First year</item>
         <item>Second year</item>
         <item>Third year</item>

@@ -57,6 +57,7 @@
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out" />
     </fragment>
+
     <fragment
         android:id="@+id/flat"
         android:name="com.example.flatmatefinder.Flat"

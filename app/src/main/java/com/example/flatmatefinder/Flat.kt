@@ -9,18 +9,34 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.databinding.FragmentFlatBinding
+import com.example.flatmatefinder.models.FlatStatusRequest
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Flat : Fragment() {
     private var _binding: FragmentFlatBinding? = null
     private val binding get() = _binding!!
     private var clickedButton = arrayListOf<AppCompatButton>()
+
+    private val onboardingViewModel by viewModels<OnboardingViewModel>()
+
+    private var hasFlat: Boolean = true
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFlatBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val next = binding.next
         val back = binding.back
@@ -50,10 +66,12 @@ class Flat : Fragment() {
             }else{
                 val button = clickedButton[clickedButton.size - 1]
                 if((button.text.toString()) == "Yes"){
-                    findNavController().navigate(R.id.action_flat_to_flatPicture)
+                    hasFlat = true
+                    onboardingViewModel.flatStatus(FlatStatusRequest("true"))
                     activity.flat = true
                 }else{
-                    findNavController().navigate(R.id.action_flat_to_userPicture)
+                    hasFlat = false
+                    onboardingViewModel.flatStatus(FlatStatusRequest("false"))
                     activity.flat = false
                 }
             }
@@ -63,7 +81,31 @@ class Flat : Fragment() {
             findNavController().popBackStack()
         }
 
-        return binding.root
+        bindObserver()
+    }
+
+    private fun bindObserver(){
+        onboardingViewModel.flatStatusRequestLiveData.observe(viewLifecycleOwner, Observer {
+            binding.progressBar.isVisible = false
+            when(it){
+                is NetworkResult.Success ->{
+                    Toast.makeText(activity as OnboardingActivity, it.data!!.message, Toast.LENGTH_SHORT).show()
+                    if(hasFlat){
+                        findNavController().navigate(R.id.action_flat_to_flatPicture)
+                    }else{
+                        findNavController().navigate(R.id.action_flat_to_userPicture)
+                    }
+                }
+
+                is NetworkResult.Error ->{
+                    Toast.makeText(activity as OnboardingActivity, it.msg, Toast.LENGTH_SHORT).show()
+                }
+
+                is NetworkResult.Loading -> {
+                    binding.progressBar.isVisible = true
+                }
+            }
+        })
     }
 
     override fun onDestroyView() {

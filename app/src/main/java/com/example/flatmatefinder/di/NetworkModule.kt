@@ -2,11 +2,15 @@ package com.example.flatmatefinder.di
 
 import com.example.flatmatefinder.Utils.Constants.BASE_URL
 import com.example.flatmatefinder.api.API
+import com.example.flatmatefinder.api.AuthInterceptor
+import com.example.flatmatefinder.api.OnboardingAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.Retrofit.Builder
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
@@ -16,18 +20,28 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesRetrofit(): Retrofit{
-
+    fun providesRetrofitBuilder(): Retrofit.Builder{
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
-            .build()
     }
 
     @Singleton
     @Provides
-    fun providesAPI(retrofit: Retrofit): API{
-        return retrofit.create(API::class.java)
+    fun providesOkHTTPClient(authInterceptor: AuthInterceptor): OkHttpClient{
+        return OkHttpClient.Builder().addInterceptor(authInterceptor).build()
+    }
+
+    @Singleton
+    @Provides
+    fun providesOnboardingAPI(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): OnboardingAPI {
+        return retrofitBuilder.client(okHttpClient).build().create(OnboardingAPI::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun providesAPI(retrofitBuilder: Retrofit.Builder): API{
+        return retrofitBuilder.build().create(API::class.java)
     }
 
 }

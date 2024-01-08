@@ -252,8 +252,18 @@
             app:layout_constraintLeft_toRightOf="@+id/non_vegetarian_yes"
             app:layout_constraintTop_toBottomOf="@+id/vegetarianQuestion" />
 
-
-
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/non_vegetarian_no"
+            app:layout_constraintBottom_toTopOf="@id/next"
+            android:indeterminateTint="#FB893D"
+            style="@style/NoActionBar"
+            android:visibility="gone"
+            />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/next"
@@ -272,7 +282,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/non_vegetarian_yes"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -10,9 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.databinding.FragmentPersonalInfoBinding
+import com.example.flatmatefinder.models.LifestyleRequest
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PersonalInfo : Fragment() {
     private var _binding : FragmentPersonalInfoBinding? = null
     private val binding get() = _binding!!
@@ -21,12 +28,19 @@ class PersonalInfo : Fragment() {
     private var workoutArray = arrayListOf<AppCompatButton>()
     private var nonVegArray = arrayListOf<AppCompatButton>()
 
+    private val onboardingViewModel by viewModels<OnboardingViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         _binding = FragmentPersonalInfoBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val back= binding.back
         val next = binding.next
 
@@ -120,15 +134,54 @@ class PersonalInfo : Fragment() {
             if(workoutArray.isEmpty() || drinksArray.isEmpty() || smokeArray.isEmpty() || nonVegArray.isEmpty()){
                 Toast.makeText(activity as OnboardingActivity, "All Options are mandatory!" ,Toast.LENGTH_SHORT).show()
             }else{
-                startActivity(Intent(activity as OnboardingActivity, MainActivity::class.java))
+                var drink = false
+                var smoke = false
+                var nonVeg = false
+                var gym = false
+
+                if(drinksArray[drinksArray.size - 1].text.toString() == "Yes"){
+                    drink = true
+                }
+                if(smokeArray[smokeArray.size - 1].text.toString() == "Yes"){
+                    smoke = true
+                }
+                if(nonVegArray[nonVegArray.size - 1].text.toString() == "Yes"){
+                    nonVeg = true
+                }
+                if(workoutArray[workoutArray.size - 1].text.toString() == "Yes"){
+                    gym = true
+                }
+
+                onboardingViewModel.storeLifestyle(LifestyleRequest(drink, nonVeg, smoke, gym))
             }
         }
         back.setOnClickListener {
             findNavController().popBackStack()
         }
-        return binding.root
+
+        bindObserver()
     }
 
+    private fun bindObserver(){
+        onboardingViewModel.flatRequestLiveData.observe(viewLifecycleOwner, Observer {
+            binding.progressBar.isVisible = false
+            when(it){
+                is NetworkResult.Success ->{
+                    Toast.makeText(activity as OnboardingActivity, "User Onboarding Completed", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(activity as OnboardingActivity, MainActivity::class.java))
+                    (activity as OnboardingActivity).finish()
+                }
+
+                is NetworkResult.Error ->{
+                    Toast.makeText(activity as OnboardingActivity, it.msg, Toast.LENGTH_SHORT).show()
+                }
+
+                is NetworkResult.Loading -> {
+                    binding.progressBar.isVisible = true
+                }
+            }
+        })
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

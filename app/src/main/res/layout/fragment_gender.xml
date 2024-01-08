@@ -69,6 +69,18 @@
         android:textColor="@drawable/button_text_color_2"
         />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/maleButton"
+        app:layout_constraintBottom_toTopOf="@id/next"
+        android:indeterminateTint="#FB893D"
+        style="@style/NoActionBar"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/next"
@@ -80,7 +92,7 @@
         android:background="@drawable/button"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="74dp"
         android:text="Next"
         android:textAllCaps="false"
         android:textSize="16dp"

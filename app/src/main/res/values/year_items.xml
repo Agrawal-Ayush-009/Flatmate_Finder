@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
         <string-array name="branch_items">
-            <item>What is your branch ?</item>
+            <item>What is your branch?</item>
             <item>CSE</item>
             <item>IT</item>
             <item>CSE(AIML)</item>

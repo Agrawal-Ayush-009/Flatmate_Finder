@@ -72,6 +72,7 @@ class SignUpFragment : Fragment() {
 
                 is NetworkResult.Error -> {
                     Toast.makeText(activity as LoginActivity, it.msg, Toast.LENGTH_SHORT).show()
+
                 }
 
                 is NetworkResult.Loading -> {

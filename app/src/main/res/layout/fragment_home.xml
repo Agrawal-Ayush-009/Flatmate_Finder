@@ -13,18 +13,23 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/frame_layout"
+        android:src="@drawable/fy"
         android:layout_marginTop="27dp"
-        android:layout_marginLeft="27dp"
         />
 
     <FrameLayout
+        android:id="@+id/frame_layout"
         android:layout_width="0dp"
-        android:layout_height="568dp"
+        android:layout_height="0dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintBottom_toTopOf="@id/dislike">
 
         <TextView
@@ -263,7 +268,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/like"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         />
 
     <ImageView
@@ -286,7 +291,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/dislike"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         />
 
     <ImageView

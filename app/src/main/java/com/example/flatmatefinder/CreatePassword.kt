@@ -13,15 +13,19 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.flatmatefinder.Utils.NetworkResult
+import com.example.flatmatefinder.Utils.TokenManager
 import com.example.flatmatefinder.databinding.FragmentCreatePasswordBinding
 import com.example.flatmatefinder.models.SignUpRequest
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CreatePassword : Fragment() {
     private var _binding : FragmentCreatePasswordBinding? = null
     private val binding get() = _binding!!
     private val authViewModel by viewModels<AuthViewModel>()
+    @Inject
+    lateinit var tokenManager: TokenManager
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,8 +68,9 @@ class CreatePassword : Fragment() {
             binding.progressBar.isVisible = false
             when (it) {
                 is NetworkResult.Success -> {
-                    //token
+                    tokenManager.saveToken(it.data!!.token)
                     startActivity(Intent(activity as LoginActivity, OnboardingActivity::class.java))
+                    (activity as LoginActivity).finish()
                 }
 
                 is NetworkResult.Error -> {

@@ -6,6 +6,8 @@ import com.example.flatmatefinder.models.OTPRequest
 import com.example.flatmatefinder.models.OTPResponse
 import com.example.flatmatefinder.models.SignUpRequest
 import com.example.flatmatefinder.models.SignUpResponse
+import com.example.flatmatefinder.models.StoreNameRequest
+import com.example.flatmatefinder.models.StoreNameResponse
 import com.example.flatmatefinder.models.VerifyOTPRequest
 import retrofit2.Response
 import retrofit2.http.Body
@@ -24,4 +26,5 @@ interface API {
 
     @POST("/signup")
     suspend fun signUp(@Body signUpRequest: SignUpRequest): Response<SignUpResponse>
+
 }

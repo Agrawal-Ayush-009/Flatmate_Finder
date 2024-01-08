@@ -12,23 +12,27 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.flatmatefinder.Utils.NetworkResult
+import com.example.flatmatefinder.Utils.TokenManager
 import com.example.flatmatefinder.databinding.FragmentLoginBinding
 import com.example.flatmatefinder.models.LoginRequest
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private val authViewModel by viewModels<AuthViewModel>()
+    @Inject
+    lateinit var tokenManager: TokenManager
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        if(tokenManager.getToken() != null){
+            startActivity(Intent(activity as LoginActivity, MainActivity::class.java))
+        }
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-
-
-
         return binding.root
     }
 
@@ -70,8 +74,9 @@ class LoginFragment : Fragment() {
             binding.progressBar.isVisible = false
             when (it) {
                 is NetworkResult.Success -> {
-                    //token
+                    tokenManager.saveToken(it.data!!.token)
                     startActivity(Intent(activity as LoginActivity, MainActivity::class.java))
+                    (activity as LoginActivity).finish()
                 }
 
                 is NetworkResult.Error -> {
