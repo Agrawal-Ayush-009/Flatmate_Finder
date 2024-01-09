@@ -31,6 +31,7 @@ class LoginFragment : Fragment() {
     ): View? {
         if(tokenManager.getToken() != null){
             startActivity(Intent(activity as LoginActivity, MainActivity::class.java))
+            (activity as LoginActivity).finish()
         }
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
