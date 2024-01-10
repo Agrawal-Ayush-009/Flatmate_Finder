@@ -1,6 +1,5 @@
 package com.example.flatmatefinder
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -15,8 +14,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.databinding.FragmentSignUpBinding
 import com.example.flatmatefinder.models.OTPRequest
+import com.example.flatmatefinder.viewModels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.regex.Pattern
 
 @AndroidEntryPoint
 class SignUpFragment : Fragment() {

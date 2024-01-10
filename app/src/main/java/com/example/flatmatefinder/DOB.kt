@@ -1,25 +1,20 @@
 package com.example.flatmatefinder
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.databinding.FragmentDOBBinding
-import com.example.flatmatefinder.databinding.FragmentNameBinding
 import com.example.flatmatefinder.models.StoreDOBRequest
-import dagger.hilt.EntryPoint
+import com.example.flatmatefinder.viewModels.OnboardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.lifecycle.HiltViewModel
 
 @AndroidEntryPoint
 class DOB : Fragment() {

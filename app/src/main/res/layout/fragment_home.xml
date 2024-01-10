@@ -14,251 +14,35 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/frame_layout"
+        app:layout_constraintBottom_toTopOf="@+id/card_stack_view"
         android:src="@drawable/fy"
         android:layout_marginTop="27dp"
         />
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
+    <com.yuyakaido.android.cardstackview.CardStackView
+        android:id="@+id/card_stack_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:visibility="visible"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
+        tools:listitem="@layout/flat_card"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo"
-        app:layout_constraintBottom_toTopOf="@id/dislike">
+        app:layout_constraintBottom_toTopOf="@id/dislike"/>
 
-        <TextView
-            android:id="@+id/AddressLine1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="19dp"
-            android:elevation="2dp"
-            android:fontFamily="@font/product_sans_bold"
-            android:text="Vasundhara, Ghaziabad"
-            android:textColor="@color/white"
-            android:textSize="12dp" />
-        <TextView
-            android:id="@+id/AddressLine2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="364, Sector 11"
-            android:textColor="@color/white"
-            android:elevation="2dp"
-            android:fontFamily="@font/product_sans_regular"
-            android:layout_marginTop="36dp"
-            android:layout_marginLeft="11dp"
-            />
-
-        <TextView
-            android:id="@+id/rent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="21000/mon"
-            android:textColor="@color/white"
-            android:elevation="2dp"
-            android:fontFamily="@font/product_sans_regular"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="11dp"
-            />
-
-        <TextView
-            android:id="@+id/flatSize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3BHK"
-            android:textSize="10dp"
-            android:textColor="@color/white"
-            android:elevation="2dp"
-            android:fontFamily="@font/product_sans_regular"
-            android:layout_marginTop="53dp"
-            android:layout_marginLeft="91dp"
-            />
-
-
-        <TextView
-            android:id="@+id/occupied"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3/4 occupied"
-            android:textSize="12dp"
-            android:textColor="@color/white"
-            android:elevation="2dp"
-            android:fontFamily="@font/product_sans_regular"
-            android:layout_marginTop="67dp"
-            android:layout_marginLeft="11dp"
-            />
-
-        <TextView
-            android:id="@+id/ownerName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:text="Ayush Agrawal"
-            android:elevation="2dp"
-            android:fontFamily="@font/product_sans_bold"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="63dp"
-            android:layout_marginLeft="8dp"
-            />
-
-        <TextView
-            android:id="@+id/btech"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:text="B.Tech"
-            android:elevation="2dp"
-            android:fontFamily="@font/product_sans_regular"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="44dp"
-            android:layout_marginLeft="8dp"
-            />
-        <TextView
-            android:id="@+id/year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:text="1st yr"
-            android:elevation="2dp"
-            android:fontFamily="@font/product_sans_regular"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="44dp"
-            android:layout_marginLeft="55dp"
-            />
-
-        <TextView
-            android:id="@+id/branch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:text="CSE"
-            android:elevation="2dp"
-            android:fontFamily="@font/product_sans_regular"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="44dp"
-            android:layout_marginLeft="94dp"
-            />
-
-        <ImageView
-            android:id="@+id/smoke_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/smoke_logo"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="23dp"
-            android:elevation="2dp"
-            android:layout_marginLeft="8dp"
-            />
-        <ImageView
-            android:id="@+id/drink_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/drink_logo"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="23dp"
-            android:elevation="2dp"
-            android:layout_marginLeft="26dp"
-            />
-        <ImageView
-            android:id="@+id/gym_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/gym_logo"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="23dp"
-            android:elevation="2dp"
-            android:layout_marginLeft="44dp"
-            />
-        <ImageView
-            android:id="@+id/veg_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/veg_logo"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="23dp"
-            android:elevation="2dp"
-            android:layout_marginLeft="62dp"
-            />
-
-        <ImageView
-            android:id="@+id/ownerPhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/profile_photo_logo"
-            android:elevation="2dp"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="29dp"
-            android:layout_marginRight="20dp"
-            />
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="92dp"
-            android:background="@drawable/flat_card_view"
-            android:elevation="1dp"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="92dp"
-            android:background="@drawable/flat_card_view_2"
-            android:elevation="1dp"
-            android:layout_gravity="bottom"
-            />
-
-        <ViewFlipper
-            android:id="@+id/viewFlipper"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
-            <ImageView
-                android:id="@+id/image_1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/image_1"
-                android:scaleType="centerCrop"
-                />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/image_2"
-                android:scaleType="centerCrop"
-                />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/image_3"
-                android:scaleType="centerCrop"
-                />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/image_4"
-                android:scaleType="centerCrop"
-                />
-
-
-        </ViewFlipper>
-
-
-    </FrameLayout>
-
+        <ProgressBar
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        app:layout_constraintBottom_toTopOf="@id/dislike"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/dislike"
@@ -268,8 +52,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/like"
-        android:layout_marginBottom="20dp"
-        />
+        android:layout_marginBottom="20dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -279,8 +62,7 @@
         app:layout_constraintBottom_toBottomOf="@id/dislike"
         app:layout_constraintTop_toTopOf="@+id/dislike"
         android:src="@drawable/dislike_logo"
-        android:elevation="10dp"
-        />
+        android:elevation="10dp" />
 
 
     <androidx.appcompat.widget.AppCompatButton

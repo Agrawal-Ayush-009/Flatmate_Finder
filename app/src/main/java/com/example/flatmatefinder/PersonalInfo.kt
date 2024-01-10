@@ -1,9 +1,9 @@
 package com.example.flatmatefinder
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.databinding.FragmentPersonalInfoBinding
 import com.example.flatmatefinder.models.LifestyleRequest
+import com.example.flatmatefinder.viewModels.OnboardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,6 +40,7 @@ class PersonalInfo : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val back= binding.back

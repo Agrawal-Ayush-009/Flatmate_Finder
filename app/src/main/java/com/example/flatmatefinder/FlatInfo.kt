@@ -13,8 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.databinding.FragmentFlatInfoBinding
 import com.example.flatmatefinder.models.FlatInfoRequest1
+import com.example.flatmatefinder.viewModels.OnboardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.time.Duration.Companion.milliseconds
 
 @AndroidEntryPoint
 class FlatInfo : Fragment() {

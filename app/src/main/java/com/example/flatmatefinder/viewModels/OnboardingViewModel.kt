@@ -1,4 +1,4 @@
-package com.example.flatmatefinder
+package com.example.flatmatefinder.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

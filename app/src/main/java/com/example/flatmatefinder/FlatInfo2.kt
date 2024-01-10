@@ -1,7 +1,6 @@
 package com.example.flatmatefinder
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.databinding.FragmentFlatInfo2Binding
-import com.example.flatmatefinder.databinding.FragmentFlatInfoBinding
 import com.example.flatmatefinder.models.FlatInfoRequest2
+import com.example.flatmatefinder.viewModels.OnboardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

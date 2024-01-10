@@ -1,7 +1,6 @@
 package com.example.flatmatefinder
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +10,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.flatmatefinder.Utils.Constants.TAG
 import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.databinding.FragmentOTPBinding
-import com.example.flatmatefinder.models.OTPResponse
 import com.example.flatmatefinder.models.VerifyOTPRequest
+import com.example.flatmatefinder.viewModels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

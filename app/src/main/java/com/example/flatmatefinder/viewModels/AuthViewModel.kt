@@ -1,4 +1,4 @@
-package com.example.flatmatefinder
+package com.example.flatmatefinder.viewModels
 
 import android.text.TextUtils
 import android.util.Patterns

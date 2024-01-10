@@ -1,8 +1,6 @@
 package com.example.flatmatefinder
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,16 +10,11 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.flatmatefinder.Utils.Constants.TAG
 import com.example.flatmatefinder.Utils.NetworkResult
-import com.example.flatmatefinder.api.OnboardingAPI
 import com.example.flatmatefinder.databinding.FragmentNameBinding
 import com.example.flatmatefinder.models.StoreNameRequest
+import com.example.flatmatefinder.viewModels.OnboardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class Name : Fragment() {
