@@ -15,7 +15,6 @@ import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.Utils.TokenManager
 import com.example.flatmatefinder.databinding.FragmentLoginBinding
 import com.example.flatmatefinder.models.LoginRequest
-import com.example.flatmatefinder.viewModels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -32,7 +31,7 @@ class LoginFragment : Fragment() {
     ): View? {
         if(tokenManager.getToken() != null){
             startActivity(Intent(activity as LoginActivity, MainActivity::class.java))
-            Toast.makeText(activity as LoginActivity, tokenManager.getToken().toString(), Toast.LENGTH_SHORT).show()
+            (activity as LoginActivity).finish()
         }
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
