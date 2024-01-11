@@ -71,8 +71,6 @@ class LoginFragment : Fragment() {
         val password = binding.PasswordInput.text.toString()
         return authViewModel.validateCredentials(email, password)
     }
-
-
     private fun bindObservers() {
         authViewModel.loginResponseLiveData.observe(viewLifecycleOwner, Observer {
             binding.progressBar.isVisible = false

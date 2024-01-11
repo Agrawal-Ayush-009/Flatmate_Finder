@@ -43,7 +43,6 @@ class FlatInfo2 : Fragment() {
                     Toast.LENGTH_SHORT).show()
             }else{
                 capacity = c;
-                slider.value = 0F
                 slider.valueFrom = 0F
                 slider.valueTo = c.toFloat()
             }
