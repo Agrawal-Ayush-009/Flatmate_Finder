@@ -51,12 +51,7 @@ class SignUpFragment : Fragment() {
         login.setOnClickListener {
             findNavController().popBackStack()
         }
-
-
     }
-
-
-
 
     private fun bindObservers() {
         authViewModel.otpResponseLiveData.observe(viewLifecycleOwner, Observer {
