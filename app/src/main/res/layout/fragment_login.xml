@@ -16,7 +16,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="30dp"
         android:src="@drawable/flatifylogo"
-
         />
 
     <TextView
