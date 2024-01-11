@@ -15,6 +15,7 @@ import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.Utils.TokenManager
 import com.example.flatmatefinder.databinding.FragmentLoginBinding
 import com.example.flatmatefinder.models.LoginRequest
+import com.example.flatmatefinder.viewModels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
