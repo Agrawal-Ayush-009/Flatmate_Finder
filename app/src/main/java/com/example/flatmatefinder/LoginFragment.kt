@@ -93,6 +93,8 @@ class LoginFragment : Fragment() {
                 is NetworkResult.Loading -> {
                     binding.progressBar.isVisible = true
                 }
+
+                else -> {}
             }
         })
     }
