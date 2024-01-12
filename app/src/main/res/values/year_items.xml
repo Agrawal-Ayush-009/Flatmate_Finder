@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
         <string-array name="branch_items">
-            <item>What is your branch?</item>
-            <item>CSE</item>
-            <item>IT</item>
-            <item>CSE(AIML)</item>
-            <item>CSE(DS)</item>
-            <item>ECE</item>
-            <item>EEE</item>
-            <item>CE</item>
-            <item>ME</item>
+            <item>What is the course your persuading?</item>
+            <item>MBA</item>
+            <item>MCA</item>
+            <item>B. Pharma</item>
+            <item>Btech (CSE)</item>
+            <item>Btech (CSE-AIML)</item>
+            <item>Btech (CSE-DS)</item>
+            <item>Btech (IT)</item>
+            <item>Btech (ECE)</item>
+            <item>Btech (EEE)</item>
+            <item>Btech (EE)</item>
+            <item>Btech (Mechanical)</item>
+            <item>Btech (Civil)</item>
         </string-array>
 </resources>

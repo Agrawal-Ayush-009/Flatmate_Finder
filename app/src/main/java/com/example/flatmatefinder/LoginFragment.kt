@@ -45,6 +45,9 @@ class LoginFragment : Fragment() {
         val login = binding.logIn
         val googleLogin = binding.googleLogin
 
+        val emailInput = binding.inputEmail
+        emailInput.setBackgroundResource(R.drawable.edit_text_2)
+
         login.setOnClickListener {
             val validationResult = validateInput()
             if(validationResult.first){

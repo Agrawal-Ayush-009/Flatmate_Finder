@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="60dp">
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#FF9A55"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload From:"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="@+id/view1"
+            app:layout_constraintRight_toRightOf="@+id/view1"
+            app:layout_constraintBottom_toBottomOf="@id/view1"
+            app:layout_constraintTop_toTopOf="@id/view1"
+            android:fontFamily="@font/satoshi_bold"
+            android:textSize="22dp"/>
+
+        <ImageView
+            android:id="@+id/cameraButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/camera"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view1"
+            android:layout_marginTop="54dp"
+            android:layout_marginLeft="53dp"
+            />
+
+        <ImageView
+            android:id="@+id/galleryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view1"
+            android:layout_marginRight="53dp"
+            android:layout_marginTop="54dp"
+            android:src="@drawable/gallery"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/cameraButton"
+            app:layout_constraintRight_toRightOf="@id/cameraButton"
+            app:layout_constraintTop_toBottomOf="@id/cameraButton"
+            android:textSize="16dp"
+            android:text="Camera"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/satoshi_bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/galleryButton"
+            app:layout_constraintRight_toRightOf="@id/galleryButton"
+            app:layout_constraintTop_toBottomOf="@id/galleryButton"
+            android:textSize="16dp"
+            android:text="Gallery"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/satoshi_bold"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
