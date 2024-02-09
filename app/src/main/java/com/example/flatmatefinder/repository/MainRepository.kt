@@ -1,17 +1,35 @@
 package com.example.flatmatefinder.repository
 
+import android.app.admin.NetworkEvent
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.flatmatefinder.Utils.Constants.TAG
 import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.api.MainAPI
 import com.example.flatmatefinder.models.FlatCardInfo
 import com.example.flatmatefinder.models.Like_Dislike
 import com.example.flatmatefinder.models.StoreNameRequest
 import com.example.flatmatefinder.models.StoreNameResponse
+import com.example.flatmatefinder.models.UpdateBioRequest
+import com.example.flatmatefinder.models.UpdateBioResponse
+import com.example.flatmatefinder.models.UserDetailsResponse
+import org.json.JSONException
 import org.json.JSONObject
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(private val mainAPI: MainAPI) {
+
+      private val _getUserDetailsLiveData = MutableLiveData<NetworkResult<UserDetailsResponse>>()
+      val getUserDetailsResponseLiveData : LiveData<NetworkResult<UserDetailsResponse>>
+            get() = _getUserDetailsLiveData
+
+
+      private val _updateBioLiveData = MutableLiveData<NetworkResult<UpdateBioResponse>>()
+      val updateBioLiveData : LiveData<NetworkResult<UpdateBioResponse>>
+            get() = _updateBioLiveData
+
 
       private val _getFlatsMutableLiveData = MutableLiveData<NetworkResult<FlatCardInfo>>()
       val getFlatLiveData : LiveData<NetworkResult<FlatCardInfo>>
@@ -32,6 +50,48 @@ class MainRepository @Inject constructor(private val mainAPI: MainAPI) {
              get() = _statusLiveData
 
 
+      private val _deleteLiveData = MutableLiveData<NetworkResult<UpdateBioResponse>>()
+      val deleteLiveData : LiveData<NetworkResult<UpdateBioResponse>>
+            get() = _deleteLiveData
+
+
+      suspend fun deleteAccount(){
+            _deleteLiveData.postValue(NetworkResult.Loading())
+            val response = mainAPI.deleteAccount()
+            if (response.isSuccessful && response.body() != null) {
+                  _deleteLiveData.postValue(NetworkResult.Success(response.body()))
+            } else if (response.errorBody() != null) {
+                  val errObj = JSONObject(response.errorBody()!!.charStream().readText())
+                  _deleteLiveData.postValue(NetworkResult.Error(errObj.getString("message")))
+            } else {
+                  _deleteLiveData.postValue(NetworkResult.Error("Something went wrong"))
+            }
+      }
+      suspend fun updateBio(updateBioRequest: UpdateBioRequest){
+            _updateBioLiveData.postValue(NetworkResult.Loading())
+            val response = mainAPI.updateBio(updateBioRequest)
+            if (response.isSuccessful && response.body() != null) {
+                  _updateBioLiveData.postValue(NetworkResult.Success(response.body()))
+            } else if (response.errorBody() != null) {
+                  val errObj = JSONObject(response.errorBody()!!.charStream().readText())
+                  _updateBioLiveData.postValue(NetworkResult.Error(errObj.getString("message")))
+            } else {
+                  _updateBioLiveData.postValue(NetworkResult.Error("Something went wrong"))
+            }
+      }
+      suspend fun getUserDetails(){
+            _getUserDetailsLiveData.postValue(NetworkResult.Loading())
+            val response = mainAPI.getUserDetails()
+            Log.d(TAG, "getUserDetails: repo")
+            if (response.isSuccessful && response.body() != null) {
+                  _getUserDetailsLiveData.postValue(NetworkResult.Success(response.body()))
+            } else if (response.errorBody() != null) {
+                  val errObj = JSONObject(response.errorBody()!!.charStream().readText())
+                  _getUserDetailsLiveData.postValue(NetworkResult.Error(errObj.getString("message")))
+            } else {
+                  _getUserDetailsLiveData.postValue(NetworkResult.Error("Something went wrong"))
+            }
+      }
 
       suspend fun getFlats(){
             _getFlatsMutableLiveData.postValue(NetworkResult.Loading())

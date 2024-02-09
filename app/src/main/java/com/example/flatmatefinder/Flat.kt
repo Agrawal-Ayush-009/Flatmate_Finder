@@ -68,11 +68,9 @@ class Flat : Fragment() {
                 if((button.text.toString()) == "Yes"){
                     hasFlat = true
                     onboardingViewModel.flatStatus(FlatStatusRequest("true"))
-                    activity.flat = true
                 }else{
                     hasFlat = false
                     onboardingViewModel.flatStatus(FlatStatusRequest("false"))
-                    activity.flat = false
                 }
             }
         }

@@ -6,6 +6,7 @@ import android.os.Handler
 import android.util.Base64
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flatmatefinder.databinding.FlatCardBinding
 import com.example.flatmatefinder.models.FlatInfo
@@ -26,25 +27,27 @@ class FlatCardAdaptor(val context: Context, val list: List<FlatInfo>): RecyclerV
       override fun onBindViewHolder(holder: FlatCardAdaptor.FlatCardViewHolder, position: Int) {
             val capacity = list[position].capacity
             val occupied = list[position].occupied
+            val monthly = list[position].rent.monthlyAmount
+            val brokerage = list[position].rent.brokerage
+
+            holder.binding.rent.text = "₹$monthly + $brokerage(brokerage)"
             holder.binding.occupied.text = "$occupied/$capacity occupied"
             holder.binding.ownerName.text = list[position].name
             holder.binding.AddressLine1.text = list[position].address.flat
             holder.binding.AddressLine2.text = list[position].address.area
-            holder.binding.rent.text = "₹${list[position].capacity+list[position].occupied}"
-            holder.binding.Course.text = list[position].branch
-            holder.binding.year.text = list[position].year.toString()
-            holder.binding.branch.text = list[position].branch
+            holder.binding.Course.text = "${list[position].branch}  ${list[position].year} yr"
+
             if(list[position].nonVegetarian){
-                  holder.binding.vegLogo.visibility = ViewGroup.GONE
+                  holder.binding.vegLogo.isVisible = false
             }
             if(list[position].smoke){
-                  holder.binding.smokeLogo.visibility = ViewGroup.VISIBLE
+                  holder.binding.smokeLogo.isVisible = true
             }
             if(list[position].drink){
-                  holder.binding.drinkLogo.visibility = ViewGroup.VISIBLE
+                  holder.binding.drinkLogo.isVisible = true
             }
             if(list[position].workout){
-                  holder.binding.gymLogo.visibility = ViewGroup.VISIBLE
+                  holder.binding.gymLogo.isVisible = true
             }
             val viewFlipper = holder.binding.viewFlipper
 
@@ -59,7 +62,8 @@ class FlatCardAdaptor(val context: Context, val list: List<FlatInfo>): RecyclerV
 
 //            val ownerImage = list[position].profileImage.data
 //            Base64.decode(ownerImage, Base64.DEFAULT)
-//            val profileBitmap = BitmapFactory.decodeByteArray(Base64.decode(ownerImage, Base64.DEFAULT), 0, Base64.decode(ownerImage, Base64.DEFAULT).size)
+//            val profileBitmap = BitmapFactory.decodeByteArray(Base64.decode(ownerImage,
+//                  Base64.DEFAULT), 0, Base64.decode(ownerImage, Base64.DEFAULT).size)
 //            holder.binding.ownerPhoto.setImageBitmap(profileBitmap)
 
 

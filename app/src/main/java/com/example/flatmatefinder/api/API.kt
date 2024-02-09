@@ -1,5 +1,6 @@
 package com.example.flatmatefinder.api
 
+import com.example.flatmatefinder.models.GoogleResponse
 import com.example.flatmatefinder.models.LoginRequest
 import com.example.flatmatefinder.models.LoginResponse
 import com.example.flatmatefinder.models.OTPRequest
@@ -11,6 +12,7 @@ import com.example.flatmatefinder.models.StoreNameResponse
 import com.example.flatmatefinder.models.VerifyOTPRequest
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface API {
@@ -27,4 +29,6 @@ interface API {
     @POST("/signup")
     suspend fun signUp(@Body signUpRequest: SignUpRequest): Response<SignUpResponse>
 
+    @GET("/google")
+    suspend fun continueGoogle()
 }

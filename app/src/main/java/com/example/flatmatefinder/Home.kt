@@ -1,6 +1,7 @@
 package com.example.flatmatefinder
 
 import android.R
+import android.content.Intent
 import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
@@ -18,9 +19,11 @@ import com.example.flatmatefinder.api.MainAPI
 import com.example.flatmatefinder.databinding.FragmentHomeBinding
 import com.example.flatmatefinder.models.Address
 import com.example.flatmatefinder.models.FlatCardInfo
+import com.example.flatmatefinder.Utils.TokenManager
 import com.example.flatmatefinder.models.FlatInfo
 import com.example.flatmatefinder.models.Like_Dislike
 import com.example.flatmatefinder.models.ProfileImage
+import com.example.flatmatefinder.models.Rent
 import com.example.flatmatefinder.viewModels.MainViewModel
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
@@ -42,6 +45,9 @@ class Home : Fragment() {
     @Inject
     lateinit var mainAPI: MainAPI
 
+    @Inject
+    lateinit var tokenManager: TokenManager
+
     private val mainViewModel by viewModels<MainViewModel>()
     private lateinit var manager: CardStackLayoutManager
     private var flatCardInfo: FlatCardInfo  ? = null
@@ -53,6 +59,8 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        Log.d(TAG, "onCreateView: ${tokenManager.getToken().toString()}")
 
 //          CoroutineScope(Dispatchers.IO).launch {
 //             val response = mainAPI.getFlat()
@@ -116,35 +124,36 @@ class Home : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainViewModel.getFlats()
-//          flatCardInfo = FlatCardInfo("60b9f6b3e4b3f852b4f5c6a5", listOf(com.example.flatmatefinder.models.FlatInfo(
-//                "sjhbcywdubcjhabc",
-//                Address("HNo. 21 Chandan Vihar","Mathura 281122","Radhe Radhe 🙏🏻"),
-//
-//                "address",
-//                4,
-//                true,
-//                "email",
-//                listOf("jcbawdujhasjhdbcau"),
-//                     "googlePicture",
-//                     "name",
-//                     false,
-//                     2,
-//                     ProfileImage("jcbawdujhasjhdbcau","zjbvhbadjhvbzjhb"),
-//                     true,
-//                     true,
-//                     2021
-//
-//          )))
-//          val flatCardInfoList = flatCardInfo?.flats
-//          val adapter = FlatCardAdaptor(requireContext(),flatCardInfoList!!)
-//          init()
-//          binding.cardStackView.layoutManager = manager
-//          binding.cardStackView.itemAnimator.apply {
-//                if (this is DefaultItemAnimator) {
-//                      supportsChangeAnimations = false
-//                }
-//          }
-//          binding.cardStackView.adapter = adapter
+          flatCardInfo = FlatCardInfo("60b9f6b3e4b3f852b4f5c6a5", listOf(com.example.flatmatefinder.models.FlatInfo(
+                "sjhbcywdubcjhabc",
+                Address("HNo. 21 Chandan Vihar","Mathura 281122","Radhe Radhe 🙏🏻"),
+
+                "address",
+                4,
+                true,
+              Rent(2000, 6000),
+                "email",
+                listOf("jcbawdujhasjhdbcau"),
+                     "googlePicture",
+                     "name",
+                     false,
+                     2,
+                     ProfileImage("jcbawdujhasjhdbcau","zjbvhbadjhvbzjhb"),
+                     true,
+                     true,
+                     2021
+
+          )))
+          val flatCardInfoList = flatCardInfo?.flats
+          val adapter = FlatCardAdaptor(requireContext(),flatCardInfoList!!)
+          init()
+          binding.cardStackView.layoutManager = manager
+          binding.cardStackView.itemAnimator.apply {
+                if (this is DefaultItemAnimator) {
+                      supportsChangeAnimations = false
+                }
+          }
+          binding.cardStackView.adapter = adapter
 
         bindObservers()
     }
@@ -152,11 +161,19 @@ class Home : Fragment() {
     private fun bindObservers() {
         mainViewModel.getFlatsLiveData.observe(viewLifecycleOwner) {
             binding.progressBar.visibility = View.GONE
+            binding.cardStackView.visibility = View.VISIBLE
             when (it) {
                 is NetworkResult.Error -> {
+                    if(it.msg == "User not found"){
+                        Toast.makeText(requireContext(), it.msg + "Login Again", Toast.LENGTH_SHORT).show()
+                        tokenManager.saveToken("")
+                        startActivity(Intent(requireContext(), LoginActivity::class.java))
+                        (activity as MainActivity).finish()
+                    }
                     Toast.makeText(requireContext(), it.msg, Toast.LENGTH_SHORT).show()
                 }
                 is NetworkResult.Loading -> {
+                    binding.cardStackView.visibility = View.GONE
                     binding.progressBar.visibility = View.VISIBLE
 
                 }

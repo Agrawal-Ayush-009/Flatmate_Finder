@@ -12,7 +12,6 @@ import java.io.IOException
 
 @AndroidEntryPoint
 class OnboardingActivity : AppCompatActivity() {
-    public var flat: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)

@@ -2,6 +2,7 @@ package com.example.flatmatefinder.api
 
 import com.example.flatmatefinder.models.BranchYearRequest
 import com.example.flatmatefinder.models.BranchYearResponse
+import com.example.flatmatefinder.models.FlatImageUploadRequest
 import com.example.flatmatefinder.models.FlatInfoRequest1
 import com.example.flatmatefinder.models.FlatInfoRequest2
 import com.example.flatmatefinder.models.FlatResponse
@@ -10,6 +11,7 @@ import com.example.flatmatefinder.models.FlatStatusResponse
 import com.example.flatmatefinder.models.GenderRequest
 import com.example.flatmatefinder.models.GenderResponse
 import com.example.flatmatefinder.models.LifestyleRequest
+import com.example.flatmatefinder.models.ProfilePictureRequest
 import com.example.flatmatefinder.models.StoreDOBRequest
 import com.example.flatmatefinder.models.StoreDOBResponse
 import com.example.flatmatefinder.models.StoreNameRequest
@@ -47,6 +49,9 @@ interface OnboardingAPI {
     @POST("/store-lifestyle")
     suspend fun storeLifestyle(@Body lifestyleRequest: LifestyleRequest): Response<FlatResponse>
 
-    @GET("/user-details")
-    suspend fun getUserDetails(): Response<UserDetailsResponse>
+    @POST("/upload-flat-images")
+    suspend fun storeFlatImages(@Body flatImageUploadRequest: FlatImageUploadRequest): Response<FlatResponse>
+
+    @POST("/upload-profile-image")
+    suspend fun storeProfilePic(@Body profilePictureRequest: ProfilePictureRequest): Response<FlatResponse>
 }

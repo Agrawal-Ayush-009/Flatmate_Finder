@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.flatmatefinder.api.API
 import com.example.flatmatefinder.Utils.Constants.TAG
 import com.example.flatmatefinder.Utils.NetworkResult
+import com.example.flatmatefinder.models.GoogleResponse
 import com.example.flatmatefinder.models.LoginRequest
 import com.example.flatmatefinder.models.LoginResponse
 import com.example.flatmatefinder.models.OTPRequest
@@ -31,7 +32,27 @@ class Repository @Inject constructor( private val api: API) {
     val signUpRequestLiveData : LiveData<NetworkResult<SignUpResponse>>
         get() = _signUpResponseLivedata
 
+    private val _googleLoginLiveData = MutableLiveData<NetworkResult<GoogleResponse>>()
+    val googleLoginLiveData : LiveData<NetworkResult<GoogleResponse>>
+        get() = _googleLoginLiveData
 
+
+
+
+//    suspend fun continueGoogle(){
+//        _googleLoginLiveData.postValue(NetworkResult.Loading())
+//
+//        val response  = api.continueGoogle()
+//
+//        if (response.isSuccessful && response.body() != null) {
+//            _googleLoginLiveData.postValue(NetworkResult.Success(response.body()))
+//        } else if (response.errorBody() != null) {
+//            val errObj = JSONObject(response.errorBody()!!.charStream().readText())
+//            _googleLoginLiveData.postValue(NetworkResult.Error(errObj.getString("message")))
+//        } else {
+//            _googleLoginLiveData.postValue(NetworkResult.Error("Something went wrong"))
+//        }
+//    }
     suspend fun loginUser(loginRequest: LoginRequest){
         _loginResponseLivedata.postValue(NetworkResult.Loading())
         val response = api.login(loginRequest)

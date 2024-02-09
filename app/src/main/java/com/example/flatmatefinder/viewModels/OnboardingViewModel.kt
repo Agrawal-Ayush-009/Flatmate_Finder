@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.models.BranchYearRequest
 import com.example.flatmatefinder.models.BranchYearResponse
+import com.example.flatmatefinder.models.FlatImageUploadRequest
 import com.example.flatmatefinder.models.FlatInfoRequest1
 import com.example.flatmatefinder.models.FlatInfoRequest2
 import com.example.flatmatefinder.models.FlatResponse
@@ -14,6 +15,7 @@ import com.example.flatmatefinder.models.FlatStatusResponse
 import com.example.flatmatefinder.models.GenderRequest
 import com.example.flatmatefinder.models.GenderResponse
 import com.example.flatmatefinder.models.LifestyleRequest
+import com.example.flatmatefinder.models.ProfilePictureRequest
 import com.example.flatmatefinder.models.StoreDOBRequest
 import com.example.flatmatefinder.models.StoreDOBResponse
 import com.example.flatmatefinder.models.StoreNameRequest
@@ -44,6 +46,17 @@ class OnboardingViewModel @Inject constructor(private val onboardingRepository: 
     val flatRequestLiveData: LiveData<NetworkResult<FlatResponse>>
         get() = onboardingRepository.flatRequestLiveData
 
+    fun storeProfilePic(profilePictureRequest: ProfilePictureRequest){
+        viewModelScope.launch {
+            onboardingRepository.storeProfilePic(profilePictureRequest)
+        }
+    }
+
+    fun storeFlatImages(flatImageUploadRequest: FlatImageUploadRequest){
+        viewModelScope.launch {
+            onboardingRepository.storeFlatImages(flatImageUploadRequest)
+        }
+    }
     fun storeFlatInfo1(flatInfoRequest1: FlatInfoRequest1){
         viewModelScope.launch {
             onboardingRepository.storeFlatInfo1(flatInfoRequest1)
