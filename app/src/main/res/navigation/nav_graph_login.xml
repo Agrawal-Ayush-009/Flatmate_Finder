@@ -17,6 +17,13 @@
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPassword2"
+            app:destination="@id/forgotPassword2"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -49,4 +56,35 @@
         android:name="com.example.flatmatefinder.CreatePassword"
         android:label="fragment_create_password"
         tools:layout="@layout/fragment_create_password" />
+    <fragment
+        android:id="@+id/forgotPassword2"
+        android:name="com.example.flatmatefinder.ForgotPassword"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPassword2_to_forgotPasswordOTP"
+            app:destination="@id/forgotPasswordOTP"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordOTP"
+        android:name="com.example.flatmatefinder.ForgotPasswordOTP"
+        android:label="fragment_forgot_password_o_t_p"
+        tools:layout="@layout/fragment_forgot_password_o_t_p" >
+        <action
+            android:id="@+id/action_forgotPasswordOTP_to_forgotPasswordCreatePassword"
+            app:destination="@id/forgotPasswordCreatePassword"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordCreatePassword"
+        android:name="com.example.flatmatefinder.ForgotPasswordCreatePassword"
+        android:label="fragment_forgot_password_create_password"
+        tools:layout="@layout/fragment_forgot_password_create_password" />
 </navigation>

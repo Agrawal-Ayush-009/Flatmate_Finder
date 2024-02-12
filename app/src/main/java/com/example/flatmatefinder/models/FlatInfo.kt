@@ -16,5 +16,6 @@ data class FlatInfo(
     val profileImage: ProfileImage,
     val smoke: Boolean,
     val workout: Boolean,
+    val bhk: Int,
     val year: Int
 )

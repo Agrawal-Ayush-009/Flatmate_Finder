@@ -36,6 +36,7 @@ class FlatCardAdaptor(val context: Context, val list: List<FlatInfo>): RecyclerV
             holder.binding.AddressLine1.text = list[position].address.flat
             holder.binding.AddressLine2.text = list[position].address.area
             holder.binding.Course.text = "${list[position].branch}  ${list[position].year} yr"
+            holder.binding.flatSize.text = "${list[position].bhk}BHK"
 
             if(list[position].nonVegetarian){
                   holder.binding.vegLogo.isVisible = false

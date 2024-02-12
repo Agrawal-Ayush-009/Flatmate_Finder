@@ -34,6 +34,7 @@ class AuthViewModel @Inject constructor(private val repository: Repository): Vie
     val signUpRequestLiveData: LiveData<NetworkResult<SignUpResponse>>
         get() = repository.signUpRequestLiveData
 
+
 //    val googleLoginLiveData : LiveData<NetworkResult<GoogleResponse>>
 //        get() = repository.googleLoginLiveData
 //
@@ -42,6 +43,21 @@ class AuthViewModel @Inject constructor(private val repository: Repository): Vie
 //            repository.continueGoogle()
 //        }
 //    }
+    fun forgotSendOTP(otpRequest: OTPRequest){
+        viewModelScope.launch {
+            repository.forgotSendOTP(otpRequest)
+        }
+    }
+
+    fun forgotVerifyOTP(verifyOTPRequest: VerifyOTPRequest){
+        viewModelScope.launch{
+            repository.forgotVerifyOTP(verifyOTPRequest)
+        }
+    }
+
+    fun setNewPassword(verifyOTPRequest: VerifyOTPRequest){
+
+    }
 
     fun loginUser(loginRequest: LoginRequest){
         viewModelScope.launch {

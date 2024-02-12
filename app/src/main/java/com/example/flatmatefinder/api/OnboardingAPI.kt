@@ -24,34 +24,34 @@ import retrofit2.http.POST
 
 interface OnboardingAPI {
 
-    @POST("/store-name")
+    @POST("/user/store-name")
     suspend fun storeName(@Body storeNameRequest: StoreNameRequest): Response<StoreNameResponse>
 
-    @POST("/store-dob")
+    @POST("/user/store-dob")
     suspend fun storeDOB(@Body storeDOBRequest: StoreDOBRequest): Response<StoreDOBResponse>
 
-    @POST("/store-flat-status")
+    @POST("/user/store-flat-status")
     suspend fun flatStatus(@Body flatStatusRequest: FlatStatusRequest): Response<FlatStatusResponse>
 
-    @POST("/store-gender")
+    @POST("/user/store-gender")
     suspend fun storeGender(@Body genderRequest: GenderRequest): Response<GenderResponse>
 
-    @POST("/store-branch-year")
+    @POST("/user/store-branch-year")
     suspend fun storeBranchYear(@Body branchYearRequest: BranchYearRequest): Response<BranchYearResponse>
 
-    @POST("/store-address-rent")
+    @POST("/user/store-address-rent")
     suspend fun storeFlatInfo1(@Body flatInfoRequest1: FlatInfoRequest1): Response<FlatResponse>
 
 
-    @POST("/store-furnishing-status-cap-occ")
+    @POST("/user/store-furnishing-status-cap-occ")
     suspend fun storeFlatInfo2(@Body flatInfoRequest2: FlatInfoRequest2): Response<FlatResponse>
 
-    @POST("/store-lifestyle")
+    @POST("/user/store-lifestyle")
     suspend fun storeLifestyle(@Body lifestyleRequest: LifestyleRequest): Response<FlatResponse>
 
-    @POST("/upload-flat-images")
+    @POST("/user/upload-flat-images")
     suspend fun storeFlatImages(@Body flatImageUploadRequest: FlatImageUploadRequest): Response<FlatResponse>
 
-    @POST("/upload-profile-image")
+    @POST("/user/upload-profile-image")
     suspend fun storeProfilePic(@Body profilePictureRequest: ProfilePictureRequest): Response<FlatResponse>
 }

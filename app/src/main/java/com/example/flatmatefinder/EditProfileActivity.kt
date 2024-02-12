@@ -157,7 +157,6 @@ class EditProfileActivity : AppCompatActivity() {
         val slider = findViewById<Slider>(R.id.occupiedSlider)
         val constraintLayout = findViewById<ConstraintLayout>(R.id.flatInfoLayout)
 
-
         name.setText(response.name)
         when (response.branch) {
             "MBA" -> {
@@ -244,6 +243,7 @@ class EditProfileActivity : AppCompatActivity() {
             slider.valueFrom = 0F
             slider.valueTo = response.capacity.toFloat()
             slider.value = response.occupied.toFloat()
+            bhk.setText(response.bhk.toString())
 
         }else {
             flatNo.setTextColor(Color.parseColor("#FFFFFF"))

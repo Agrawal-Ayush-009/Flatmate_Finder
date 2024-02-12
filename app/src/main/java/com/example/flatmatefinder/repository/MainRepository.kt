@@ -10,6 +10,7 @@ import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.api.MainAPI
 import com.example.flatmatefinder.models.FlatCardInfo
 import com.example.flatmatefinder.models.Like_Dislike
+import com.example.flatmatefinder.models.OTPResponse
 import com.example.flatmatefinder.models.StoreNameRequest
 import com.example.flatmatefinder.models.StoreNameResponse
 import com.example.flatmatefinder.models.UpdateBioRequest
@@ -45,8 +46,8 @@ class MainRepository @Inject constructor(private val mainAPI: MainAPI) {
 
 
 
-      private val _statusLiveData = MutableLiveData<NetworkResult<String>>()
-       val statusLiveData : LiveData<NetworkResult<String>>
+      private val _statusLiveData = MutableLiveData<NetworkResult<OTPResponse>>()
+       val statusLiveData : LiveData<NetworkResult<OTPResponse>>
              get() = _statusLiveData
 
 

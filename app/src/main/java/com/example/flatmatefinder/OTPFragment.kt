@@ -36,6 +36,7 @@ class OTPFragment : Fragment() {
         val activity = activity as LoginActivity
 
         val emailDescription = binding.emailDescription
+
         val email = activity.email
 
         verifyOTP.setOnClickListener {

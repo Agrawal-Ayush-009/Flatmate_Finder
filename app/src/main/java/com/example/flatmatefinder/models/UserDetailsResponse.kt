@@ -17,5 +17,6 @@ data class UserDetailsResponse(
     val rent: Rent,
     val smoke: Boolean,
     val workout: Boolean,
+    val bhk: Int,
     val year: Int
 )
