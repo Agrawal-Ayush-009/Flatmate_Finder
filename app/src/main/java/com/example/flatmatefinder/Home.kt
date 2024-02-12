@@ -1,6 +1,7 @@
 package com.example.flatmatefinder
 
 import android.R
+import android.content.Intent
 import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -18,14 +20,18 @@ import com.example.flatmatefinder.api.MainAPI
 import com.example.flatmatefinder.databinding.FragmentHomeBinding
 import com.example.flatmatefinder.models.Address
 import com.example.flatmatefinder.models.FlatCardInfo
+import com.example.flatmatefinder.Utils.TokenManager
 import com.example.flatmatefinder.models.FlatInfo
 import com.example.flatmatefinder.models.Like_Dislike
 import com.example.flatmatefinder.models.ProfileImage
+import com.example.flatmatefinder.models.Rent
 import com.example.flatmatefinder.viewModels.MainViewModel
+import com.google.ads.interactivemedia.pal.utils.Duration
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.Direction
 import com.yuyakaido.android.cardstackview.StackFrom
+import com.yuyakaido.android.cardstackview.SwipeAnimationSetting
 import com.yuyakaido.android.cardstackview.SwipeableMethod
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -33,19 +39,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.math.log
 
 @AndroidEntryPoint
 class Home : Fragment() {
-    private var _binding : FragmentHomeBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding
         get() = _binding!!
+
     @Inject
     lateinit var mainAPI: MainAPI
 
+    @Inject
+    lateinit var tokenManager: TokenManager
+
     private val mainViewModel by viewModels<MainViewModel>()
     private lateinit var manager: CardStackLayoutManager
-    private var flatCardInfo: FlatCardInfo  ? = null
-
+    private var flatCardInfo: FlatCardInfo? = null
 
 
     override fun onCreateView(
@@ -53,6 +63,8 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        Log.d(TAG, "onCreateView: ${tokenManager.getToken().toString()}")
 
 //          CoroutineScope(Dispatchers.IO).launch {
 //             val response = mainAPI.getFlat()
@@ -66,18 +78,68 @@ class Home : Fragment() {
         return binding.root
     }
 
+    private fun like_dislike(s: String, id: String) {
+        if (s.equals("l")) {
+            CoroutineScope(Dispatchers.IO).launch {
+                val response = mainAPI.dislikeFlats(Like_Dislike(id))
+                Log.d("Cutie", "like_dislike:" + response.body())
+            }
+        } else {
+            CoroutineScope(Dispatchers.IO).launch {
+                val response = mainAPI.addLike(Like_Dislike(id))
+                Log.d("Cutie", "like_dislike:" + response.body())
+            }
+        }
+    }
+
     private fun init() {
-
-
         manager = CardStackLayoutManager(requireContext(), object : CardStackListener {
             override fun onCardDragging(direction: Direction?, ratio: Float) {
 
             }
 
             override fun onCardSwiped(direction: Direction?) {
-                if(manager!!.topPosition == flatCardInfo!!.flats!!.size){
-                    Toast.makeText(requireContext(), "End of the list", Toast.LENGTH_SHORT).show()
+                if (manager!!.topPosition == flatCardInfo!!.flats.size) {
+                    binding.endListText.isVisible = true
+                    var topPosition = manager.topPosition
+                    var currentFlatInfoId = flatCardInfo!!.flats[topPosition - 1]._id
+                    when (direction) {
+                        Direction.Left -> {
+                            // Handle left swipe
+                            // You can perform specific actions for left swipes
+                            like_dislike("l", currentFlatInfoId)
+                        }
+
+                        Direction.Right -> {
+                            // Handle right swipe
+                            // You can perform specific actions for right swipes
+                            like_dislike("r", currentFlatInfoId)
+                        }
+
+                        else -> {
+                            // Handle other directions if needed
+                        }
+                    }
                     return
+                }
+                var topPosition = manager.topPosition
+                var currentFlatInfoId = flatCardInfo!!.flats[topPosition - 1]._id
+                when (direction) {
+                    Direction.Left -> {
+                        // Handle left swipe
+                        // You can perform specific actions for left swipes
+                        like_dislike("l", currentFlatInfoId)
+                    }
+
+                    Direction.Right -> {
+                        // Handle right swipe
+                        // You can perform specific actions for right swipes
+                        like_dislike("r", currentFlatInfoId)
+                    }
+
+                    else -> {
+                        // Handle other directions if needed
+                    }
                 }
             }
 
@@ -97,6 +159,7 @@ class Home : Fragment() {
 
             }
 
+
         })
         manager.setStackFrom(StackFrom.None)
         manager.setVisibleCount(3)
@@ -113,38 +176,63 @@ class Home : Fragment() {
 
     }
 
+    private fun swipeCard(direction: Direction) {
+        val setting = SwipeAnimationSetting.Builder()
+            .setDirection(direction)
+            .setDuration(300) // You can adjust the duration as needed
+            .build()
+
+        manager.setSwipeAnimationSetting(setting)
+        binding.cardStackView.swipe()
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainViewModel.getFlats()
-//          flatCardInfo = FlatCardInfo("60b9f6b3e4b3f852b4f5c6a5", listOf(com.example.flatmatefinder.models.FlatInfo(
-//                "sjhbcywdubcjhabc",
-//                Address("HNo. 21 Chandan Vihar","Mathura 281122","Radhe Radhe 🙏🏻"),
+//        flatCardInfo = FlatCardInfo(
+//            "60b9f6b3e4b3f852b4f5c6a5", listOf(
+//                com.example.flatmatefinder.models.FlatInfo(
+//                    "sjhbcywdubcjhabc",
+//                    Address("HNo. 21 Chandan Vihar", "Mathura 281122", "Radhe Radhe 🙏🏻"),
 //
-//                "address",
-//                4,
-//                true,
-//                "email",
-//                listOf("jcbawdujhasjhdbcau"),
-//                     "googlePicture",
-//                     "name",
-//                     false,
-//                     2,
-//                     ProfileImage("jcbawdujhasjhdbcau","zjbvhbadjhvbzjhb"),
-//                     true,
-//                     true,
-//                     2021
+//                    "address",
+//                    4,
+//                    true,
+//                    Rent(2000, 6000),
+//                    "email",
+//                    listOf("jcbawdujhasjhdbcau"),
+//                    "googlePicture",
+//                    "name",
+//                    false,
+//                    2,
+//                    ProfileImage("jcbawdujhasjhdbcau", "zjbvhbadjhvbzjhb"),
+//                    true,
+//                    true,
+//                    3,
+//                    2021
 //
-//          )))
-//          val flatCardInfoList = flatCardInfo?.flats
-//          val adapter = FlatCardAdaptor(requireContext(),flatCardInfoList!!)
-//          init()
-//          binding.cardStackView.layoutManager = manager
-//          binding.cardStackView.itemAnimator.apply {
-//                if (this is DefaultItemAnimator) {
-//                      supportsChangeAnimations = false
-//                }
-//          }
-//          binding.cardStackView.adapter = adapter
+//                )
+//            )
+//        )
+//        val flatCardInfoList = flatCardInfo?.flats
+//        val adapter = FlatCardAdaptor(requireContext(), flatCardInfoList!!)
+//        init()
+//        binding.cardStackView.layoutManager = manager
+//        binding.cardStackView.itemAnimator.apply {
+//            if (this is DefaultItemAnimator) {
+//                supportsChangeAnimations = false
+//            }
+//        }
+//        binding.cardStackView.adapter = adapter
+
+        binding.dislike.setOnClickListener {
+            swipeCard(Direction.Left)
+        }
+
+        binding.like.setOnClickListener {
+            swipeCard(Direction.Right)
+        }
 
         bindObservers()
     }
@@ -152,27 +240,42 @@ class Home : Fragment() {
     private fun bindObservers() {
         mainViewModel.getFlatsLiveData.observe(viewLifecycleOwner) {
             binding.progressBar.visibility = View.GONE
+            binding.transparentBg.visibility = View.GONE
             when (it) {
                 is NetworkResult.Error -> {
+                    if (it.msg == "User not found") {
+                        Toast.makeText(requireContext(), it.msg + "Login Again", Toast.LENGTH_SHORT)
+                            .show()
+                        tokenManager.saveToken("")
+                        startActivity(Intent(requireContext(), LoginActivity::class.java))
+                        (activity as MainActivity).finish()
+                    }
                     Toast.makeText(requireContext(), it.msg, Toast.LENGTH_SHORT).show()
                 }
+
                 is NetworkResult.Loading -> {
+                    binding.transparentBg.visibility = View.VISIBLE
                     binding.progressBar.visibility = View.VISIBLE
 
                 }
+
                 is NetworkResult.Success -> {
                     flatCardInfo = it.data
+
                     val flatCardInfoList = flatCardInfo?.flats
+                    if (flatCardInfoList!!.isEmpty()) {
+                        binding.listSizeZero.isVisible = true
+                    }
                     init()
-                    val adapter = FlatCardAdaptor(requireContext(),flatCardInfoList!!)
+                    val adapter = FlatCardAdaptor(requireContext(), flatCardInfoList!!)
                     binding.cardStackView.layoutManager = manager
                     binding.cardStackView.itemAnimator.apply {
                         if (this is DefaultItemAnimator) {
                             supportsChangeAnimations = false
                         }
                     }
+                    Log.e(TAG, "bindObservers: " + flatCardInfoList)
                     binding.cardStackView.adapter = adapter
-
                 }
             }
 

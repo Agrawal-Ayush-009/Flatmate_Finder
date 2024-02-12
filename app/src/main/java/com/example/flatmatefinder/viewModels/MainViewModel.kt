@@ -1,8 +1,10 @@
 package com.example.flatmatefinder.viewModels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flatmatefinder.models.Like_Dislike
+import com.example.flatmatefinder.models.UpdateBioRequest
 import com.example.flatmatefinder.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,6 +16,26 @@ class MainViewModel @Inject constructor(private val mainRepository : MainReposit
       val getFlatsLiveData = mainRepository.getFlatLiveData
       val getFlatMatesLiveData = mainRepository.getFlatMateLiveData
       val statusLiveData = mainRepository.statusLiveData
+      val getUserDetailsLiveData = mainRepository.getUserDetailsResponseLiveData
+      val updateBioLiveData = mainRepository.updateBioLiveData
+      val deleteLiveData = mainRepository.deleteLiveData
+
+      fun deleteAccount(){
+            viewModelScope.launch {
+                  mainRepository.deleteAccount()
+            }
+      }
+      fun updateBio(updateBioRequest: UpdateBioRequest){
+            viewModelScope.launch {
+                  mainRepository.updateBio(updateBioRequest)
+            }
+      }
+      fun getUserDetails(){
+            viewModelScope.launch {
+                  mainRepository.getUserDetails()
+            }
+      }
+
       fun getFlats(){
             viewModelScope.launch {
                   mainRepository.getFlats()

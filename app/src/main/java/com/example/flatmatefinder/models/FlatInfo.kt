@@ -6,6 +6,7 @@ data class FlatInfo(
     val branch: String,
     val capacity: Int,
     val drink: Boolean,
+    val rent : Rent,
     val email: String,
     val flatImages: List<String>,
     val googlePicture: Any,
@@ -15,5 +16,6 @@ data class FlatInfo(
     val profileImage: ProfileImage,
     val smoke: Boolean,
     val workout: Boolean,
+    val bhk: Int,
     val year: Int
 )

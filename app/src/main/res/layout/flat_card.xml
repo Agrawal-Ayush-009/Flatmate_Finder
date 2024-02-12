@@ -6,7 +6,6 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -45,30 +44,38 @@
                     android:layout_marginLeft="11dp"
                     />
 
-                <TextView
-                    android:id="@+id/rent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="21000/mon"
-                    android:textColor="@color/white"
-                    android:elevation="2dp"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginLeft="11dp"
-                    />
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   android:elevation="10dp"
+                   >
+                   <TextView
+                       android:id="@+id/rent"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="21000/mon"
+                       android:textColor="@color/white"
+                       android:elevation="2dp"
+                       android:fontFamily="@font/product_sans_regular"
+                       android:layout_marginTop="50dp"
+                       android:layout_marginLeft="11dp"
+                       />
 
-                <TextView
-                    android:id="@+id/flatSize"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3BHK"
-                    android:textSize="10dp"
-                    android:textColor="@color/white"
-                    android:elevation="2dp"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:layout_marginTop="53dp"
-                    android:layout_marginLeft="91dp"
-                    />
+                   <TextView
+                       android:id="@+id/flatSize"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="3BHK"
+                       android:textSize="12dp"
+                       android:textColor="@color/white"
+                       android:elevation="2dp"
+                       android:fontFamily="@font/product_sans_regular"
+                       android:layout_marginTop="53dp"
+                       android:layout_marginLeft="10dp"
+                       />
+
+               </LinearLayout>
 
 
                 <TextView
@@ -104,44 +111,17 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:textSize="14dp"
-                    android:text="B.Tech"
+                    android:text="B.Tech(CSE-AIML)"
                     android:elevation="2dp"
                     android:fontFamily="@font/product_sans_regular"
                     android:layout_gravity="bottom"
                     android:layout_marginBottom="44dp"
                     android:layout_marginLeft="8dp"
                     />
-                <TextView
-                    android:id="@+id/year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="14dp"
-                    android:text="1st yr"
-                    android:elevation="2dp"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="44dp"
-                    android:layout_marginLeft="55dp"
-                    />
-
-                <TextView
-                    android:id="@+id/branch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="14dp"
-                    android:text="CSE"
-                    android:elevation="2dp"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="44dp"
-                    android:layout_marginLeft="94dp"
-                    />
 
                 <ImageView
                     android:id="@+id/smoke_logo"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/smoke_logo"
@@ -152,7 +132,7 @@
                     />
                 <ImageView
                     android:id="@+id/drink_logo"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/drink_logo"
@@ -163,7 +143,7 @@
                     />
                 <ImageView
                     android:id="@+id/gym_logo"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/gym_logo"
@@ -190,9 +170,9 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/profile_photo_logo"
                     android:elevation="2dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="328dp"
+                    android:layout_gravity="bottom|right"
                     android:layout_marginBottom="29dp"
+                    android:layout_marginRight="11dp"
                     />
 
 

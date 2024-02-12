@@ -1,13 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.FlatmateFinder" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.FlatmateFinder" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">#FB893D</item>
     </style>
 
     <style name="Theme.FlatmateFinder" parent="Base.Theme.FlatmateFinder" />
 
-    <style name="NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>

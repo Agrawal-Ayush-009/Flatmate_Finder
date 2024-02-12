@@ -62,7 +62,9 @@ class FlatInfo2 : Fragment() {
 
             val occupied = slider.value
 
-            onboardingViewModel.storeFlatInfo2(FlatInfoRequest2(capacity, furnished.toString(), occupied.toInt()))
+            val bhk = binding.inputSize.text.toString().toInt()
+
+            onboardingViewModel.storeFlatInfo2(FlatInfoRequest2(capacity, furnished.toString(), bhk , occupied.toInt()))
 
         }
 

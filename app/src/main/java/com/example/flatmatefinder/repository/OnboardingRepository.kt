@@ -1,13 +1,12 @@
 package com.example.flatmatefinder.repository
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.flatmatefinder.OnboardingActivity
 import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.api.OnboardingAPI
 import com.example.flatmatefinder.models.BranchYearRequest
 import com.example.flatmatefinder.models.BranchYearResponse
+import com.example.flatmatefinder.models.FlatImageUploadRequest
 import com.example.flatmatefinder.models.FlatInfoRequest1
 import com.example.flatmatefinder.models.FlatInfoRequest2
 import com.example.flatmatefinder.models.FlatResponse
@@ -16,6 +15,7 @@ import com.example.flatmatefinder.models.FlatStatusResponse
 import com.example.flatmatefinder.models.GenderRequest
 import com.example.flatmatefinder.models.GenderResponse
 import com.example.flatmatefinder.models.LifestyleRequest
+import com.example.flatmatefinder.models.ProfilePictureRequest
 import com.example.flatmatefinder.models.StoreDOBRequest
 import com.example.flatmatefinder.models.StoreDOBResponse
 import com.example.flatmatefinder.models.StoreNameRequest
@@ -52,6 +52,33 @@ class OnboardingRepository @Inject constructor(private val onboardingAPI: Onboar
     private val _flatRequestLivedata = MutableLiveData<NetworkResult<FlatResponse>>()
     val flatRequestLiveData: LiveData<NetworkResult<FlatResponse>>
         get() = _flatRequestLivedata
+
+    suspend fun storeFlatImages(flatImageUploadRequest: FlatImageUploadRequest){
+        _flatRequestLivedata.postValue(NetworkResult.Loading())
+        val response = onboardingAPI.storeFlatImages(flatImageUploadRequest)
+
+        if(response.isSuccessful && response.body() != null){
+            _flatRequestLivedata.postValue(NetworkResult.Success(response.body()))
+        }else if(response.errorBody() != null){
+            val errObj = JSONObject(response.errorBody()!!.charStream().readText())
+            _flatRequestLivedata.postValue(NetworkResult.Error(errObj.getString("message")))
+        }else{
+            _flatRequestLivedata.postValue(NetworkResult.Error("Something went wrong"))
+        }
+    }
+
+    suspend fun storeProfilePic(profilePictureRequest: ProfilePictureRequest){
+        _flatRequestLivedata.postValue(NetworkResult.Loading())
+        val response = onboardingAPI.storeProfilePic(profilePictureRequest)
+        if(response.isSuccessful && response.body() != null){
+            _flatRequestLivedata.postValue(NetworkResult.Success(response.body()))
+        }else if(response.errorBody() != null){
+            val errObj = JSONObject(response.errorBody()!!.charStream().readText())
+            _flatRequestLivedata.postValue(NetworkResult.Error(errObj.getString("message")))
+        }else{
+            _flatRequestLivedata.postValue(NetworkResult.Error("Something went wrong"))
+        }
+    }
 
 
     suspend fun storeFlatInfo1(flatInfoRequest1: FlatInfoRequest1){

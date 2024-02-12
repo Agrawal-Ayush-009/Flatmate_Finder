@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flatmatefinder.Utils.NetworkResult
+import com.example.flatmatefinder.models.GoogleResponse
 import com.example.flatmatefinder.models.LoginRequest
 import com.example.flatmatefinder.models.LoginResponse
 import com.example.flatmatefinder.models.OTPRequest
@@ -32,6 +33,31 @@ class AuthViewModel @Inject constructor(private val repository: Repository): Vie
 
     val signUpRequestLiveData: LiveData<NetworkResult<SignUpResponse>>
         get() = repository.signUpRequestLiveData
+
+
+//    val googleLoginLiveData : LiveData<NetworkResult<GoogleResponse>>
+//        get() = repository.googleLoginLiveData
+//
+//    fun continueGoogle(){
+//        viewModelScope.launch{
+//            repository.continueGoogle()
+//        }
+//    }
+    fun forgotSendOTP(otpRequest: OTPRequest){
+        viewModelScope.launch {
+            repository.forgotSendOTP(otpRequest)
+        }
+    }
+
+    fun forgotVerifyOTP(verifyOTPRequest: VerifyOTPRequest){
+        viewModelScope.launch{
+            repository.forgotVerifyOTP(verifyOTPRequest)
+        }
+    }
+
+    fun setNewPassword(verifyOTPRequest: VerifyOTPRequest){
+
+    }
 
     fun loginUser(loginRequest: LoginRequest){
         viewModelScope.launch {

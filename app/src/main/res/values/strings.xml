@@ -7,6 +7,6 @@
     <string name="pictureImageDescriptionFlat">Upload<b> 4 or more </b>photos of your flat.</string>
     <string name="capacityDescription">Enter the <b>maximum number</b> of flatmates you want (<b>excluding you</b>).</string>
     <string name="occupiedDescription">Enter the <b>number</b> of flatmates occupied (<b>excluding you</b>).</string>
-    <string name="emailDescription">Enter the OTP sent to <b>ayu*********i@gmail.com</b></string>
+    <string name="emailDescription">Enter the OTP sent to <b>Your Mail.</b></string>
     <string name="otpDescription">Didn’t recieve the OTP ? <b>click here to resend</b></string>
 </resources>
