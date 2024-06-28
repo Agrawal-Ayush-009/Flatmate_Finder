@@ -34,7 +34,7 @@ class AuthViewModel @Inject constructor(private val repository: Repository): Vie
     val signUpRequestLiveData: LiveData<NetworkResult<SignUpResponse>>
         get() = repository.signUpRequestLiveData
 
-
+ 
 //    val googleLoginLiveData : LiveData<NetworkResult<GoogleResponse>>
 //        get() = repository.googleLoginLiveData
 //
@@ -55,8 +55,10 @@ class AuthViewModel @Inject constructor(private val repository: Repository): Vie
         }
     }
 
-    fun setNewPassword(verifyOTPRequest: VerifyOTPRequest){
-
+    fun setNewPassword(singUpRequest: SignUpRequest){
+        viewModelScope.launch {
+            repository.setNewPassword(singUpRequest)
+        }
     }
 
     fun loginUser(loginRequest: LoginRequest){

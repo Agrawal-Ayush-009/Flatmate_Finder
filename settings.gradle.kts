@@ -3,6 +3,8 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+
+        //for third party library
         maven { url = uri ("https://jitpack.io") }
     }
 }

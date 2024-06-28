@@ -65,16 +65,6 @@ class Home : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         Log.d(TAG, "onCreateView: ${tokenManager.getToken().toString()}")
-
-//          CoroutineScope(Dispatchers.IO).launch {
-//             val response = mainAPI.getFlat()
-//                Log.d(TAG,response.body().toString())
-//          }
-//          val like = Like_Dislike("60b9f6b3e4b3f852b4f5c6a5")
-//          CoroutineScope(Dispatchers.IO).launch {
-//             val response = mainAPI.dislikeFlats(like)
-//                Log.e("Dislike",response.body().toString())
-//          }
         return binding.root
     }
 
@@ -190,41 +180,6 @@ class Home : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainViewModel.getFlats()
-//        flatCardInfo = FlatCardInfo(
-//            "60b9f6b3e4b3f852b4f5c6a5", listOf(
-//                com.example.flatmatefinder.models.FlatInfo(
-//                    "sjhbcywdubcjhabc",
-//                    Address("HNo. 21 Chandan Vihar", "Mathura 281122", "Radhe Radhe 🙏🏻"),
-//
-//                    "address",
-//                    4,
-//                    true,
-//                    Rent(2000, 6000),
-//                    "email",
-//                    listOf("jcbawdujhasjhdbcau"),
-//                    "googlePicture",
-//                    "name",
-//                    false,
-//                    2,
-//                    ProfileImage("jcbawdujhasjhdbcau", "zjbvhbadjhvbzjhb"),
-//                    true,
-//                    true,
-//                    3,
-//                    2021
-//
-//                )
-//            )
-//        )
-//        val flatCardInfoList = flatCardInfo?.flats
-//        val adapter = FlatCardAdaptor(requireContext(), flatCardInfoList!!)
-//        init()
-//        binding.cardStackView.layoutManager = manager
-//        binding.cardStackView.itemAnimator.apply {
-//            if (this is DefaultItemAnimator) {
-//                supportsChangeAnimations = false
-//            }
-//        }
-//        binding.cardStackView.adapter = adapter
 
         binding.dislike.setOnClickListener {
             swipeCard(Direction.Left)
@@ -244,7 +199,7 @@ class Home : Fragment() {
             when (it) {
                 is NetworkResult.Error -> {
                     if (it.msg == "User not found") {
-                        Toast.makeText(requireContext(), it.msg + "Login Again", Toast.LENGTH_SHORT)
+                        Toast.makeText(requireContext(), it.msg + " Login Again", Toast.LENGTH_SHORT)
                             .show()
                         tokenManager.saveToken("")
                         startActivity(Intent(requireContext(), LoginActivity::class.java))

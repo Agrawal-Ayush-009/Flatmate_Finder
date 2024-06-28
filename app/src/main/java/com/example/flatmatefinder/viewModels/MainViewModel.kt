@@ -19,6 +19,13 @@ class MainViewModel @Inject constructor(private val mainRepository : MainReposit
       val getUserDetailsLiveData = mainRepository.getUserDetailsResponseLiveData
       val updateBioLiveData = mainRepository.updateBioLiveData
       val deleteLiveData = mainRepository.deleteLiveData
+      val getMessageAccessLiveData = mainRepository.getMessageAccessLiveData
+
+      fun getMessageAccess(){
+            viewModelScope.launch {
+                  mainRepository.getMessageAccess()
+            }
+      }
 
       fun deleteAccount(){
             viewModelScope.launch {

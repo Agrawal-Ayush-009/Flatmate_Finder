@@ -89,8 +89,8 @@ class FlatPicture : Fragment() {
         }
 
         next.setOnClickListener {
-//            val bitmap1 = convertImageToBitmap(image1)
-//            bitmap1.compress(Bitmap.CompressFormat.JPEG,40, FileOutputStream(image1.drawable.toString()))
+            val bitmap1 = convertImageToBitmap(image1)
+            bitmap1.compress(Bitmap.CompressFormat.JPEG,40, FileOutputStream(image1.drawable.toString()))
 //            val base64_1 = convertBitmapToBase64(bitmap1)
 //            val base64_2 = convertBitmapToBase64(convertImageToBitmap(image2))
 //            val base64_3 = convertBitmapToBase64(convertImageToBitmap(image3))
@@ -192,6 +192,7 @@ class FlatPicture : Fragment() {
         val image =  stream.toByteArray()
         return Base64.encodeToString(image, Base64.DEFAULT)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

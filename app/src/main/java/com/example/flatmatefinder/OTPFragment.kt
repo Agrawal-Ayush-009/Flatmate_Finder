@@ -42,12 +42,13 @@ class OTPFragment : Fragment() {
         verifyOTP.setOnClickListener {
             val otp = binding.otp.text.toString()
             authViewModel.verifyOTP(VerifyOTPRequest(email,otp))
-            bindObservers()
         }
 
         back.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        bindObservers()
     }
 
     private fun bindObservers() {

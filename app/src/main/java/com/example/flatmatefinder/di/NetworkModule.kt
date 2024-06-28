@@ -16,23 +16,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-
 @InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesRetrofitBuilder(): Retrofit.Builder{
+    fun providesRetrofitBuilder(): Retrofit.Builder {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
-
     }
 
     @Singleton
     @Provides
-    fun providesOkHTTPClient(authInterceptor: AuthInterceptor): OkHttpClient{
+    fun providesOkHTTPClient(authInterceptor: AuthInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(1, TimeUnit.MINUTES)
             .readTimeout(30, TimeUnit.SECONDS)
@@ -42,19 +40,22 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesOnboardingAPI(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): OnboardingAPI {
+    fun providesOnboardingAPI(
+        retrofitBuilder: Retrofit.Builder,
+        okHttpClient: OkHttpClient
+    ): OnboardingAPI {
         return retrofitBuilder.client(okHttpClient).build().create(OnboardingAPI::class.java)
     }
 
     @Singleton
     @Provides
-    fun providesAPI(retrofitBuilder: Retrofit.Builder): API{
+    fun providesAPI(retrofitBuilder: Retrofit.Builder): API {
         return retrofitBuilder.build().create(API::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideMainAPI(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): MainAPI{
+    fun provideMainAPI(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): MainAPI {
         return retrofitBuilder
             .client(okHttpClient)
             .build()

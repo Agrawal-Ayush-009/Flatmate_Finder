@@ -1,186 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Profile"
-    android:background="#ffffff">
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:indeterminateTint="#FB893D"
-        android:elevation="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent" />
-    <View
-        android:id="@+id/transparentBg"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="invisible"
-        android:elevation="5dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        tools:context=".Profile">
 
-        />
-    <ImageView
-        android:id="@+id/options"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/options"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="46dp"
-        android:layout_marginRight="20dp"/>
-    <TextView
-        android:id="@+id/nameHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/product_sans_bold"
-        android:text="My Profile"
-        android:textColor="@color/black"
-        android:textSize="24dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="98dp"
-        />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:elevation="10dp"
+            android:indeterminateTint="#FB893D"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/profilePic"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameHeading"
-        android:layout_marginTop="12dp"
-        android:src="@drawable/profile_pic"
-        android:scaleType="centerCrop"
-        android:background="@drawable/round_outline"
-        android:clipToOutline="true"
-        />
+        <View
+            android:id="@+id/transparentBg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#FFFFFF"
+            android:elevation="5dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
-    <ImageView
-        android:id="@+id/editProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="@id/profilePic"
-        app:layout_constraintBottom_toBottomOf="@id/profilePic"
-        android:src="@drawable/edit"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="-4dp"
-        />
+        <ImageView
+            android:id="@+id/options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/options"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/product_sans_bold"
-        android:text="Ayush Agrawal"
-        android:textColor="@color/black"
-        android:textSize="32dp"
-        app:layout_constraintTop_toBottomOf="@id/profilePic"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="16dp"/>
+        <TextView
+            android:id="@+id/nameHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="98dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="My Profile"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/branch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@id/name"
-        android:text="B.Tech 2nd"
-        app:layout_constraintRight_toLeftOf="@+id/year"
-        android:layout_marginRight="10dp"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:fontFamily="@font/product_sans_bold"
-        android:layout_marginTop="12dp"
-        />
+        <ImageView
+            android:id="@+id/profilePic"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/round_outline"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile_pic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameHeading" />
 
-    <TextView
-        android:id="@+id/year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@id/name"
-        android:text="CSE"
-        android:textColor="@color/black"
-        android:fontFamily="@font/product_sans_bold"
-        android:layout_marginTop="12dp"
-        android:textSize="16dp"
-        app:layout_constraintLeft_toRightOf="@+id/branch"
-        />
+        <ImageView
+            android:id="@+id/editProfile"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="-4dp"
+            android:src="@drawable/edit"
+            app:layout_constraintBottom_toBottomOf="@id/profilePic"
+            app:layout_constraintRight_toRightOf="@id/profilePic" />
 
-    <TextView
-        android:id="@+id/bio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/product_sans_bold"
-        android:text="bio"
-        android:textColor="@color/black"
-        android:textSize="24dp"
-        app:layout_constraintTop_toBottomOf="@id/branch"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="28dp"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="Ayush Agrawal"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profilePic" />
 
-    <EditText
-        android:id="@+id/editBio"
-        android:layout_width="0dp"
-        android:layout_height="90dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bio"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/edit_text_2"
-        android:textColor="@color/black"
-        android:text="Main NINJA HATORI aagaya hun..."
-        android:gravity="top"
-        android:padding="8dp"
-        android:fontFamily="@font/product_sans_regular"
-        android:textSize="16dp"
-        />
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:indeterminateTint="#FB893D"
-        android:elevation="10dp"
-        android:visibility="invisible"
-        android:layout_marginRight="10dp"
-        app:layout_constraintTop_toTopOf="@id/saveBio"
-        app:layout_constraintRight_toLeftOf="@id/saveBio"
-        app:layout_constraintBottom_toBottomOf="@id/saveBio" />
+        <TextView
+            android:id="@+id/branch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="B.Tech 2nd"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="@+id/name"
+            app:layout_constraintRight_toLeftOf="@+id/year"
+            app:layout_constraintTop_toBottomOf="@id/name" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/saveBio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="@+id/editBio"
-        app:layout_constraintTop_toBottomOf="@+id/editBio"
-        android:background="@drawable/button_save"
-        android:text="Save"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:paddingBottom="4dp"
-        android:paddingTop="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:layout_marginTop="4dp"
-        />
+        <TextView
+            android:id="@+id/year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="CSE"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toRightOf="@+id/branch"
+            app:layout_constraintRight_toRightOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <TextView
+            android:id="@+id/bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="bio"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/branch" />
+
+        <EditText
+            android:id="@+id/editBio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text_2"
+            android:fontFamily="@font/product_sans_regular"
+            android:gravity="top"
+            android:minHeight="90dp"
+            android:padding="8dp"
+            android:text="Main NINJA HATORI aagaya hun..."
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bio" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:elevation="10dp"
+            android:indeterminateTint="#FB893D"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/saveBio"
+            app:layout_constraintRight_toLeftOf="@id/saveBio"
+            app:layout_constraintTop_toTopOf="@id/saveBio" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/saveBio"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/button_save"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingHorizontal="53dp"
+            android:paddingVertical="5dp"
+            android:paddingRight="8dp"
+            android:text="Update Bio"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintRight_toRightOf="@+id/editBio"
+            app:layout_constraintTop_toBottomOf="@+id/editBio" />
 
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>

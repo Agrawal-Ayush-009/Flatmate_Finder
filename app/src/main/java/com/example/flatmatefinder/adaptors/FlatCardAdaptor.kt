@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.flatmatefinder.R
 import com.example.flatmatefinder.databinding.FlatCardBinding
 import com.example.flatmatefinder.models.FlatInfo
 
@@ -39,7 +40,9 @@ class FlatCardAdaptor(val context: Context, val list: List<FlatInfo>): RecyclerV
             holder.binding.flatSize.text = "${list[position].bhk}BHK"
 
             if(list[position].nonVegetarian){
-                  holder.binding.vegLogo.isVisible = false
+                  holder.binding.vegLogo.setImageResource(R.drawable.non_veg_logo)
+            }else{
+                  holder.binding.vegLogo.setImageResource(R.drawable.veg_logo)
             }
             if(list[position].smoke){
                   holder.binding.smokeLogo.isVisible = true
