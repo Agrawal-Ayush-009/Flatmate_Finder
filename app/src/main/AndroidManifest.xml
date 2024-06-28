@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".FlatifyApplication"
@@ -23,10 +24,12 @@
         android:theme="@style/Theme.FlatmateFinder"
         tools:targetApi="31">
         <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".GoogleLoginActivity"
             android:exported="false"
-            android:screenOrientation="locked"
-            />
+            android:screenOrientation="locked" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -52,15 +55,14 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".OnboardingActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="locked"
-            />
+            android:screenOrientation="locked" />
 
         <meta-data
             android:name="preloaded_fonts"

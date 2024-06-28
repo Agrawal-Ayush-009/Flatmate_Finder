@@ -10,6 +10,7 @@ import com.example.flatmatefinder.Utils.NetworkResult
 import com.example.flatmatefinder.api.MainAPI
 import com.example.flatmatefinder.models.FlatCardInfo
 import com.example.flatmatefinder.models.Like_Dislike
+import com.example.flatmatefinder.models.MessageAccessResponse
 import com.example.flatmatefinder.models.OTPResponse
 import com.example.flatmatefinder.models.StoreNameRequest
 import com.example.flatmatefinder.models.StoreNameResponse
@@ -55,6 +56,23 @@ class MainRepository @Inject constructor(private val mainAPI: MainAPI) {
       val deleteLiveData : LiveData<NetworkResult<UpdateBioResponse>>
             get() = _deleteLiveData
 
+
+      private val _getMessageAccessLiveData = MutableLiveData<NetworkResult<MessageAccessResponse>>()
+      val getMessageAccessLiveData: LiveData<NetworkResult<MessageAccessResponse>>
+            get() = _getMessageAccessLiveData
+
+      suspend fun getMessageAccess(){
+            _getMessageAccessLiveData.postValue(NetworkResult.Loading())
+            val response = mainAPI.getMessageAccess()
+            if (response.isSuccessful && response.body() != null) {
+                  _getMessageAccessLiveData.postValue(NetworkResult.Success(response.body()))
+            } else if (response.errorBody() != null) {
+                  val errObj = JSONObject(response.errorBody()!!.charStream().readText())
+                  _getMessageAccessLiveData.postValue(NetworkResult.Error(errObj.getString("message")))
+            } else {
+                  _getMessageAccessLiveData.postValue(NetworkResult.Error("Something went wrong"))
+            }
+      }
 
       suspend fun deleteAccount(){
             _deleteLiveData.postValue(NetworkResult.Loading())

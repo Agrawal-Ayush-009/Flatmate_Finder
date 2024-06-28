@@ -56,7 +56,11 @@ class Profile : Fragment() {
 
         saveBio.setOnClickListener {
             val bio = editBio.text.toString()
-            mainViewModel.updateBio(UpdateBioRequest(bio))
+            if(bio.isEmpty()){
+                Toast.makeText(requireContext(), "Bio Can't be Empty", Toast.LENGTH_SHORT).show()
+            }else{
+                mainViewModel.updateBio(UpdateBioRequest(bio))
+            }
         }
 
         binding.options.setOnClickListener {

@@ -43,8 +43,9 @@ class Name : Fragment() {
             }else{
                 Toast.makeText(activity as OnboardingActivity, "Name can't be Empty", Toast.LENGTH_SHORT).show()
             }
-            bindObserver()
         }
+
+        bindObserver()
     }
 
     private fun bindObserver(){

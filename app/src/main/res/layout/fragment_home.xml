@@ -11,14 +11,15 @@
         android:id="@+id/transparentBg"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="visible"
-        android:elevation="5dp"
         android:background="#FFFFFF"
+        android:elevation="5dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/logo"
@@ -92,7 +93,7 @@
         android:id="@+id/dislike"
         android:layout_width="71dp"
         android:layout_height="71dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/dislike_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -113,7 +114,7 @@
         android:id="@+id/like"
         android:layout_width="71dp"
         android:layout_height="71dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/like_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/dislike"

@@ -18,28 +18,26 @@ import org.json.JSONObject
 import retrofit2.Response
 import javax.inject.Inject
 
-class Repository @Inject constructor( private val api: API) {
+class Repository @Inject constructor(private val api: API) {
 
     private val _loginResponseLivedata = MutableLiveData<NetworkResult<LoginResponse>>()
-    val loginResponseLiveData : LiveData<NetworkResult<LoginResponse>>
+    val loginResponseLiveData: LiveData<NetworkResult<LoginResponse>>
         get() = _loginResponseLivedata
 
     private val _otpResponseLivedata = MutableLiveData<NetworkResult<OTPResponse>>()
-    val otpResponseLiveData : LiveData<NetworkResult<OTPResponse>>
+    val otpResponseLiveData: LiveData<NetworkResult<OTPResponse>>
         get() = _otpResponseLivedata
 
     private val _signUpResponseLivedata = MutableLiveData<NetworkResult<SignUpResponse>>()
-    val signUpRequestLiveData : LiveData<NetworkResult<SignUpResponse>>
+    val signUpRequestLiveData: LiveData<NetworkResult<SignUpResponse>>
         get() = _signUpResponseLivedata
 
     private val _googleLoginLiveData = MutableLiveData<NetworkResult<GoogleResponse>>()
-    val googleLoginLiveData : LiveData<NetworkResult<GoogleResponse>>
+    val googleLoginLiveData: LiveData<NetworkResult<GoogleResponse>>
         get() = _googleLoginLiveData
 
 
-
-
-//    suspend fun continueGoogle(){
+    //    suspend fun continueGoogle(){
 //        _googleLoginLiveData.postValue(NetworkResult.Loading())
 //
 //        val response  = api.continueGoogle()
@@ -53,13 +51,14 @@ class Repository @Inject constructor( private val api: API) {
 //            _googleLoginLiveData.postValue(NetworkResult.Error("Something went wrong"))
 //        }
 //    }
-    suspend fun loginUser(loginRequest: LoginRequest){
+    suspend fun loginUser(loginRequest: LoginRequest) {
         _loginResponseLivedata.postValue(NetworkResult.Loading())
         val response = api.login(loginRequest)
+        Log.d(TAG, "loginUser: ${response.headers()}")
         handleResponse(response)
     }
 
-    suspend fun forgotSendOTP(otpRequest: OTPRequest){
+    suspend fun forgotSendOTP(otpRequest: OTPRequest) {
         _otpResponseLivedata.postValue(NetworkResult.Loading())
         val response = api.forgotPasswordSendOTP(otpRequest)
 
@@ -73,13 +72,13 @@ class Repository @Inject constructor( private val api: API) {
         }
     }
 
-    suspend fun forgotVerifyOTP(verifyOTPRequest: VerifyOTPRequest){
+    suspend fun forgotVerifyOTP(verifyOTPRequest: VerifyOTPRequest) {
         _otpResponseLivedata.postValue(NetworkResult.Loading())
         val response = api.forgotPasswordVerifyOTP(verifyOTPRequest)
 
-        if(response.isSuccessful && response.body() != null){
+        if (response.isSuccessful && response.body() != null) {
             _otpResponseLivedata.postValue(NetworkResult.Success(response.body()))
-        }else if(response.errorBody() != null){
+        } else if (response.errorBody() != null) {
             val errObj = JSONObject(response.errorBody()!!.charStream().readText())
             _otpResponseLivedata.postValue(NetworkResult.Error(errObj.getString("message")))
         } else {
@@ -87,7 +86,7 @@ class Repository @Inject constructor( private val api: API) {
         }
     }
 
-    suspend fun setNewPassword(signUpRequest: SignUpRequest){
+    suspend fun setNewPassword(signUpRequest: SignUpRequest) {
         _signUpResponseLivedata.postValue(NetworkResult.Loading())
         val response = api.setNewPassword(signUpRequest)
         if (response.isSuccessful && response.body() != null) {
@@ -100,7 +99,7 @@ class Repository @Inject constructor( private val api: API) {
         }
     }
 
-    suspend fun sendOTP(otpRequest: OTPRequest){
+    suspend fun sendOTP(otpRequest: OTPRequest) {
         _otpResponseLivedata.postValue(NetworkResult.Loading())
         val response = api.sendOTP(otpRequest)
 
@@ -114,13 +113,13 @@ class Repository @Inject constructor( private val api: API) {
         }
     }
 
-    suspend fun verifyOTP(verifyOTPRequest: VerifyOTPRequest){
+    suspend fun verifyOTP(verifyOTPRequest: VerifyOTPRequest) {
         _otpResponseLivedata.postValue(NetworkResult.Loading())
         val response = api.verifyOTP(verifyOTPRequest)
 
-        if(response.isSuccessful && response.body() != null){
+        if (response.isSuccessful && response.body() != null) {
             _otpResponseLivedata.postValue(NetworkResult.Success(response.body()))
-        }else if(response.errorBody() != null){
+        } else if (response.errorBody() != null) {
             val errObj = JSONObject(response.errorBody()!!.charStream().readText())
             _otpResponseLivedata.postValue(NetworkResult.Error(errObj.getString("message")))
         } else {
@@ -128,7 +127,7 @@ class Repository @Inject constructor( private val api: API) {
         }
     }
 
-    suspend fun signUpUser(signUpRequest: SignUpRequest){
+    suspend fun signUpUser(signUpRequest: SignUpRequest) {
         _signUpResponseLivedata.postValue(NetworkResult.Loading())
         val response = api.signUp(signUpRequest)
         if (response.isSuccessful && response.body() != null) {

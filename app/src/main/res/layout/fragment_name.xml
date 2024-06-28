@@ -41,6 +41,7 @@
         android:background="@drawable/edit_text_2"
         android:fontFamily="@font/product_sans_regular"
         android:hint="Enter your full name"
+        android:singleLine="true"
         android:paddingLeft="8dp"
         android:textSize="16dp"
         android:textColor="@color/black"
