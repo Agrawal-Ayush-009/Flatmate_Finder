@@ -18,7 +18,7 @@
 <div align="center">
   <img src="https://github.com/Agrawal-Ayush-009/Flatmate_Finder/blob/master/app/src/main/res/drawable/i.jpg?raw=true" width="120" height="267">
   <img src="https://github.com/Agrawal-Ayush-009/Flatmate_Finder/blob/master/app/src/main/res/drawable/j.jpg?raw=true" width="120" height="267">
-  <img src="https://github.com/Agrawal-Ayush-009/Flatmate_Finder/blob/master/app/src/main/res/drawable/k (2).jpg?raw=true" width="120" height="267">  
+  <img src="https://github.com/Agrawal-Ayush-009/Flatmate_Finder/blob/master/app/src/main/res/drawable/k.jpg?raw=true" width="120" height="267">  
 </div>
 
 ## ⭐ Features
